@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cUj-CI-3kQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uJL-hY-A86">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -52,7 +52,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="TsZ-cK-yNn"/>
                     <connections>
-                        <outlet property="SchBr" destination="f4Y-Qn-u4Z" id="LCl-dm-koV"/>
+                        <outlet property="SchBr" destination="f4Y-Qn-u4Z" id="8us-Bi-lt6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXK-TD-ZVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
