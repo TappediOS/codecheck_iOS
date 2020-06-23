@@ -38,25 +38,28 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard searchBar.text != nil else { return }
+        guard let searchWord = searchBar.text else { return }
         
-        word = searchBar.text!
+        word = searchWord
+        url = "https://api.github.com/search/repositories?q=\(searchWord)"
         
-        if word.count != 0 {
-            url = "https://api.github.com/search/repositories?q=\(word!)"
-            task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
-                if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = obj["items"] as? [[String: Any]] {
-                    self.repo = items
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
+        guard let searchURLStr = url, let encodeURLStr = searchURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let url = URL(string: encodeURLStr) else { return }
+        
+
+        task = URLSession.shared.dataTask(with: url) { (data, res, err) in
+            if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
+                if let items = obj["items"] as? [[String: Any]] {
+                self.repo = items
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
                     }
                 }
             }
+        }
         // これ呼ばなきゃリストが更新されません
         task?.resume()
-        }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
