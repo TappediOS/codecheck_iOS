@@ -49,6 +49,11 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         
 
         task = URLSession.shared.dataTask(with: url) { (data, res, err) in
+            if let err = err {
+                print("Error: \(err.localizedDescription)")
+                return
+            }
+            
             if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
                 if let items = obj["items"] as? [[String: Any]] {
                 self.repo = items
@@ -60,9 +65,6 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         }
         // これ呼ばなきゃリストが更新されません
         task?.resume()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
