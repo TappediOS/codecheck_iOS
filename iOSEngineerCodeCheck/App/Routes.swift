@@ -10,6 +10,8 @@ import UIKit
 
 struct Routes {
     static func decideRootViewController() -> UIViewController {
-        return SearchGitHubRepositoriesViewBuilder.create()
+        let serchGitHubRepVC = SearchGitHubRepositoriesViewBuilder.create()
+        let mainNavigationController = UINavigationController(rootViewController: serchGitHubRepVC)
+        return mainNavigationController
     }
 }
