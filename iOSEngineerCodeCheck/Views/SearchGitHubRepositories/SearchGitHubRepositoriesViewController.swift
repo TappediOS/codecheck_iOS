@@ -20,7 +20,19 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gitHubRepositoriesSearchBar.text = "GitHubのリポジトリを検索できるよー"
+        
+        setupNavigationBar()
+        setupSearchBar()
+    }
+    
+    func setupNavigationBar() {
+        self.navigationItem.title = "Search"
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func setupSearchBar() {
+        self.gitHubRepositoriesSearchBar.text = "Repository"
         self.gitHubRepositoriesSearchBar.delegate = self
     }
     

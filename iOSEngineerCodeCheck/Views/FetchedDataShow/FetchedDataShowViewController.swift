@@ -24,8 +24,15 @@ final class FetchedDataShowViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupNavigationBar()
         self.setupRepositoryInfomationLabels()
         self.fetchUserProfileImage()
+    }
+    
+    func setupNavigationBar() {
+        self.navigationItem.title = "Result"
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     func setupRepositoryInfomationLabels() {
