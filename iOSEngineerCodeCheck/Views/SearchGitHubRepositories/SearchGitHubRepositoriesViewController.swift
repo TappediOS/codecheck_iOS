@@ -13,11 +13,10 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     @IBOutlet weak var gitHubRepositoriesSearchBar: UISearchBar!
     
-    var searchedRepositoriesInfomation: [[String: Any]]=[]
+    var searchedRepositoriesInfomation: [[String: Any]] = []
     
     var searchWord: String = ""
     var url: String = ""
-    var tableViewTappedCellIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,9 +71,8 @@ extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.gitHubRepositoriesSearchBar.resignFirstResponder()
         
-        tableViewTappedCellIndex = indexPath.row
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
-        FetchDataShowVC.SerchGitHubRepVC = self
+        FetchDataShowVC.searchedRepositoryInfomation = self.searchedRepositoriesInfomation[indexPath.row]
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
     }
 }
