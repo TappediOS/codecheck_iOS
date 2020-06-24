@@ -42,16 +42,23 @@ final class FetchedDataShowViewController: UIViewController {
         
         TtlLbl.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
         
-        if let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] {
-            if let imgURL = owner[GitHubSearchResultString.avatar_url.rawValue] as? String {
-                URLSession.shared.dataTask(with: URL(string: imgURL)!) { (data, res, err) in
-                    let img = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.ImgView.image = img
-                    }
-                }.resume()
+        guard let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
+        guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
+        guard let url = URL(string: imageURLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, res, err) in
+            if let err = err {
+                print("Error: \(err.localizedDescription)")
+                return
             }
-        }
+            
+            guard let data = data else { return }
+            guard let userImage = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                self.ImgView.image = userImage
+            }
+        }.resume()
         
     }
     
