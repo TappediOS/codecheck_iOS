@@ -84,7 +84,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hEM-MA-qn0"/>
                     <connections>
-                        <outlet property="repositoryForkCountLabel" destination="wlt-Wy-tt0" id="Ifg-gn-kAA"/>
+                        <outlet property="repositoryForkCountLabel" destination="ijG-ue-5sh" id="pCK-1d-kcG"/>
                         <outlet property="repositoryLanguageLabel" destination="C8u-nx-6z9" id="CEn-tT-6fs"/>
                         <outlet property="repositoryOpenIssuesCountLabel" destination="GJY-Gp-hNj" id="8hT-Tx-s8I"/>
                         <outlet property="repositoryStarCountLabel" destination="MzM-X9-O4c" id="JRZ-si-otP"/>

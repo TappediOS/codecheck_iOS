@@ -11,7 +11,7 @@ import Foundation
 enum GitHubSearchResultString: String {
     case language = "language"
     case stargazers_count = "stargazers_count"
-    case wachers_count = "wachers_count"
+    case watchers_count = "watchers_count"
     case forks_count = "forks_count"
     case open_issues_count = "open_issues_count"
     case full_name = "full_name"
