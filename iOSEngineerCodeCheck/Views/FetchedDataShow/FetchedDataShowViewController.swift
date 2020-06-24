@@ -52,22 +52,8 @@ final class FetchedDataShowViewController: UIViewController {
     func fetchUserProfileImage(){
         guard let owner = self.searchedRepositoryInfomation[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
-        guard let encodeImageURLStr = imageURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return}
-        guard let url = URL(string: encodeImageURLStr) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, res, err) in
-            if let err = err {
-                print("Error: \(err.localizedDescription)")
-                return
-            }
-            guard let data = data else { return }
-            guard let userImage = UIImage(data: data) else { return }
-            
-            DispatchQueue.main.async {
-                self.userProfileImageView.image = userImage
-            }
-        }.resume()
-        
+        self.presenter.searchProfileImage(imageURLStr: imageURLStr)
     }
     
     func inject(with presenter: FetchedDataShowViewPresenterProtocol) {
@@ -77,5 +63,10 @@ final class FetchedDataShowViewController: UIViewController {
 }
 
 extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
-    
+    func setProfileImage(imageData: Data) {
+        guard let userImage = UIImage(data: imageData) else { return }
+        DispatchQueue.main.async {
+            self.userProfileImageView.image = userImage
+        }
+    }
 }
