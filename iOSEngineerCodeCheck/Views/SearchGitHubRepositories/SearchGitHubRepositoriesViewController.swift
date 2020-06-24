@@ -21,8 +21,13 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
         setupNavigationBar()
         setupSearchBar()
+    }
+    
+    func setupTableView() {
+        self.tableView.rowHeight = 75
     }
     
     func setupNavigationBar() {
@@ -77,11 +82,17 @@ extension SearchGitHubRepositoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let RepositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
-        cell.textLabel?.text = RepositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
-        cell.detailTextLabel?.text = RepositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
-        cell.tag = indexPath.row
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath) as? RepositoryCell else { return UITableViewCell() }
+        
+        
+        
+        let repositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
+        let fullName = repositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
+        let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
+         
+        cell.fullNameLabel.text = fullName
+        cell.languageLabel.text = language
+        
         return cell
     }
     

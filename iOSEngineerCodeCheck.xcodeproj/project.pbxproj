@@ -17,6 +17,7 @@
 		BF29E9EC249F27CC00325994 /* SampleViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29E9EB249F27CC00325994 /* SampleViewPresenter.swift */; };
 		BF29E9EF249F283A00325994 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF29E9EE249F283A00325994 /* Sample.storyboard */; };
 		BF390DBB24A2FA1000E0BB08 /* GitHubSearchResultString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */; };
+		BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */; };
 		BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */; };
 		BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */; };
 		BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */; };
@@ -63,6 +64,7 @@
 		BF29E9EB249F27CC00325994 /* SampleViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewPresenter.swift; sourceTree = "<group>"; };
 		BF29E9EE249F283A00325994 /* Sample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sample.storyboard; sourceTree = "<group>"; };
 		BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearchResultString.swift; sourceTree = "<group>"; };
+		BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FetchedDataShow.storyboard; sourceTree = "<group>"; };
 		BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowViewController.swift; sourceTree = "<group>"; };
 		BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowBuilder.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				BF65C22524A1B03900C03EDA /* SearchGitHubRepositoriesModel.swift */,
 				BF65C22724A1B04200C03EDA /* SearchGitHubRepositoriesPresenter.swift */,
 				BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */,
+				BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */,
 			);
 			path = SearchGitHubRepositories;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				BF29E9E2249F275600325994 /* ExUIViewController.swift in Sources */,
 				BF390DBB24A2FA1000E0BB08 /* GitHubSearchResultString.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
+				BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */,
 				BF65C22424A1B03500C03EDA /* SearchGitHubRepositoriesBuilder.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				BF29E9E4249F277600325994 /* ExUIView.swift in Sources */,
