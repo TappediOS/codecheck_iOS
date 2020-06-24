@@ -45,6 +45,11 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         self.presenter.didChangeSearchBar()
     }
     
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard self.gitHubRepositoriesSearchBar.isFirstResponder else { return }
+        self.gitHubRepositoriesSearchBar.resignFirstResponder()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
         
