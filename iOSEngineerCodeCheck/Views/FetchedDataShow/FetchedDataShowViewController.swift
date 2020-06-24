@@ -27,7 +27,7 @@ final class FetchedDataShowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx]
+        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
         
         LangLbl.text = "Written in \(repo["language"] as? String ?? "")"
         StrsLbl.text = "\(repo["stargazers_count"] as? Int ?? 0) stars"
@@ -40,7 +40,7 @@ final class FetchedDataShowViewController: UIViewController {
     
     func getImage(){
         
-        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx]
+        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
         
         TtlLbl.text = repo["full_name"] as? String
         

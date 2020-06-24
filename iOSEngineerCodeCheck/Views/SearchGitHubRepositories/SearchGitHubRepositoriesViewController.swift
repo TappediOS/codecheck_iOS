@@ -17,9 +17,9 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     var repo: [[String: Any]]=[]
     
     var task: URLSessionTask?
-    var word: String!
-    var url: String!
-    var idx: Int!
+    var word: String = ""
+    var url: String = ""
+    var idx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,6 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
         searchBar.text = ""
         return true
     }
@@ -44,11 +43,9 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         word = searchWord
         url = "https://api.github.com/search/repositories?q=\(searchWord)"
         
-        guard let searchURLStr = url, let encodeURLStr = searchURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL(string: encodeURLStr) else { return }
+        guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let searchURL = URL(string: encodeURLStr) else { return }
         
-
-        task = URLSession.shared.dataTask(with: url) { (data, res, err) in
+        task = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {
                 print("Error: \(err.localizedDescription)")
                 return
@@ -63,7 +60,6 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
                 }
             }
         }
-        // これ呼ばなきゃリストが更新されません
         task?.resume()
     }
     
@@ -78,14 +74,12 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         cell.detailTextLabel?.text = rp["language"] as? String ?? ""
         cell.tag = indexPath.row
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.SchBr.resignFirstResponder()
         
         idx = indexPath.row
-        
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
         FetchDataShowVC.SerchGitHubRepVC = self
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
