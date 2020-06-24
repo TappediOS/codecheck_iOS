@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="12j-Jv-5dg">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,23 +11,23 @@
             <objects>
                 <viewController id="12j-Jv-5dg" customClass="FetchedDataShowViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i2C-Ei-a1M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k22-Nv-hRx">
-                                <rect key="frame" x="20" y="130" width="374" height="374"/>
+                                <rect key="frame" x="20" y="-70" width="560" height="560"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="k22-Nv-hRx" secondAttribute="height" multiplier="1:1" id="Ter-5T-QpW"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWl-HI-J3p">
-                                <rect key="frame" x="181" y="532" width="52.5" height="33.5"/>
+                                <rect key="frame" x="274" y="518" width="52.5" height="47.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Uzs-rU-9vn">
-                                <rect key="frame" x="20" y="600" width="374" height="86"/>
+                                <rect key="frame" x="20" y="600" width="560" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8u-nx-6z9">
                                         <rect key="frame" x="0.0" y="0.0" width="79" height="20.5"/>
@@ -37,7 +36,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="b5o-LN-Xep">
-                                        <rect key="frame" x="309" y="0.0" width="65" height="86"/>
+                                        <rect key="frame" x="495" y="0.0" width="65" height="120"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stars" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzM-X9-O4c">
                                                 <rect key="frame" x="0.0" y="0.0" width="65" height="18"/>
@@ -53,13 +52,12 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forks" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijG-ue-5sh">
                                                 <rect key="frame" x="0.0" y="68" width="65" height="18"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issues" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJY-Gp-hNj">
-                                                <rect key="frame" x="0.0" y="68" width="65" height="18"/>
+                                                <rect key="frame" x="0.0" y="102" width="65" height="18"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -85,13 +83,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="hEM-MA-qn0"/>
                     <connections>
-                        <outlet property="FrksLbl" destination="wlt-Wy-tt0" id="Ifg-gn-kAA"/>
-                        <outlet property="ImgView" destination="k22-Nv-hRx" id="xvg-19-hya"/>
-                        <outlet property="IsssLbl" destination="GJY-Gp-hNj" id="8hT-Tx-s8I"/>
-                        <outlet property="LangLbl" destination="C8u-nx-6z9" id="CEn-tT-6fs"/>
-                        <outlet property="StrsLbl" destination="MzM-X9-O4c" id="JRZ-si-otP"/>
-                        <outlet property="TtlLbl" destination="tWl-HI-J3p" id="ReG-96-Dxo"/>
-                        <outlet property="WchsLbl" destination="wlt-Wy-tt0" id="ddw-RQ-590"/>
+                        <outlet property="repositoryForkCountLabel" destination="wlt-Wy-tt0" id="Ifg-gn-kAA"/>
+                        <outlet property="repositoryLanguageLabel" destination="C8u-nx-6z9" id="CEn-tT-6fs"/>
+                        <outlet property="repositoryOpenIssuesCountLabel" destination="GJY-Gp-hNj" id="8hT-Tx-s8I"/>
+                        <outlet property="repositoryStarCountLabel" destination="MzM-X9-O4c" id="JRZ-si-otP"/>
+                        <outlet property="repositoryTitleLabel" destination="tWl-HI-J3p" id="ReG-96-Dxo"/>
+                        <outlet property="repositoryWatchCountLabel" destination="wlt-Wy-tt0" id="ddw-RQ-590"/>
+                        <outlet property="userProfileImageView" destination="k22-Nv-hRx" id="xvg-19-hya"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTd-hT-isj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
