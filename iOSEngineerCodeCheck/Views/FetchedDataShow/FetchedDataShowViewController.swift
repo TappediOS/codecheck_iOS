@@ -11,34 +11,42 @@ import UIKit
 final class FetchedDataShowViewController: UIViewController {
     private var presenter: FetchedDataShowViewPresenterProtocol!
     
-    @IBOutlet weak var ImgView: UIImageView!
-    @IBOutlet weak var TtlLbl: UILabel!
+    @IBOutlet weak var userProfileImageView: UIImageView!
+    @IBOutlet weak var repositoryTitleLabel: UILabel!
     
-    @IBOutlet weak var LangLbl: UILabel!
-    @IBOutlet weak var StrsLbl: UILabel!
-    @IBOutlet weak var WchsLbl: UILabel!
-    @IBOutlet weak var FrksLbl: UILabel!
-    @IBOutlet weak var IsssLbl: UILabel!
+    @IBOutlet weak var repositoryLanguageLabel: UILabel!
+    @IBOutlet weak var repositoryStarCountLabel: UILabel!
+    @IBOutlet weak var repositoryWatchCountLabel: UILabel!
+    @IBOutlet weak var repositoryForkCountLabel: UILabel!
+    @IBOutlet weak var repositoryOpenIssuesCountLabel: UILabel!
     
     var SerchGitHubRepVC: SearchGitHubRepositoriesViewController!
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
-        
-        LangLbl.text = "Written in \(repo[GitHubSearchResultString.language.rawValue] as? String ?? "")"
-        StrsLbl.text = "\(repo[GitHubSearchResultString.stargazers_count.rawValue] as? Int ?? 0) stars"
-        WchsLbl.text = "\(repo[GitHubSearchResultString.wachers_count.rawValue] as? Int ?? 0) watchers"
-        FrksLbl.text = "\(repo[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0) forks"
-        IsssLbl.text = "\(repo[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0) open issues"
-        getImage()
+        setupRepositoryInfomationLabels()
+        fetchUserProfileImage()
     }
     
-    func getImage(){
-        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
+    func setupRepositoryInfomationLabels() {
+        let repositoryInfo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
+        let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
+        let starCount = repositoryInfo[GitHubSearchResultString.stargazers_count.rawValue] as? String ?? ""
+        let watchCount = repositoryInfo[GitHubSearchResultString.wachers_count.rawValue] as? Int ?? 0
+        let forksCount = repositoryInfo[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0
+        let openIssuesCount = repositoryInfo[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0
         
-        TtlLbl.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
+        repositoryLanguageLabel.text = "Written in \(language)"
+        repositoryStarCountLabel.text = "\(starCount) stars"
+        repositoryWatchCountLabel.text = "\(watchCount) watchers"
+        repositoryForkCountLabel.text = "\(forksCount) forks"
+        repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
+    }
+
+    func fetchUserProfileImage(){
+        let repo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
+        
+        repositoryTitleLabel.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
         
         guard let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
@@ -54,7 +62,7 @@ final class FetchedDataShowViewController: UIViewController {
             guard let userImage = UIImage(data: data) else { return }
             
             DispatchQueue.main.async {
-                self.ImgView.image = userImage
+                self.userProfileImageView.image = userImage
             }
         }.resume()
         
