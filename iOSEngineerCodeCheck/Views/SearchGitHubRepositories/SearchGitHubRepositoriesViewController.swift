@@ -37,15 +37,10 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func setupSearchBar() {
-        self.gitHubRepositoriesSearchBar.text = "Repository"
+        self.gitHubRepositoriesSearchBar.placeholder = "Repository"
         self.gitHubRepositoriesSearchBar.delegate = self
     }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.text = ""
-        return true
-    }
-    
+        
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.presenter.didChangeSearchBar()
     }
