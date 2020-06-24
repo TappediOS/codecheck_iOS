@@ -11,7 +11,6 @@ import UIKit
 final class FetchedDataShowViewController: UIViewController {
     private var presenter: FetchedDataShowViewPresenterProtocol!
     
-    
     @IBOutlet weak var ImgView: UIImageView!
     @IBOutlet weak var TtlLbl: UILabel!
     
@@ -21,39 +20,43 @@ final class FetchedDataShowViewController: UIViewController {
     @IBOutlet weak var FrksLbl: UILabel!
     @IBOutlet weak var IsssLbl: UILabel!
     
-    
     var SerchGitHubRepVC: SearchGitHubRepositoriesViewController!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx]
+        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
         
-        LangLbl.text = "Written in \(repo["language"] as? String ?? "")"
-        StrsLbl.text = "\(repo["stargazers_count"] as? Int ?? 0) stars"
-        WchsLbl.text = "\(repo["wachers_count"] as? Int ?? 0) watchers"
-        FrksLbl.text = "\(repo["forks_count"] as? Int ?? 0) forks"
-        IsssLbl.text = "\(repo["open_issues_count"] as? Int ?? 0) open issues"
+        LangLbl.text = "Written in \(repo[GitHubSearchResultString.language.rawValue] as? String ?? "")"
+        StrsLbl.text = "\(repo[GitHubSearchResultString.stargazers_count.rawValue] as? Int ?? 0) stars"
+        WchsLbl.text = "\(repo[GitHubSearchResultString.wachers_count.rawValue] as? Int ?? 0) watchers"
+        FrksLbl.text = "\(repo[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0) forks"
+        IsssLbl.text = "\(repo[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0) open issues"
         getImage()
-        
     }
     
     func getImage(){
+        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
         
-        let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx]
+        TtlLbl.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
         
-        TtlLbl.text = repo["full_name"] as? String
+        guard let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
+        guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
+        guard let encodeImageURLStr = imageURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return}
+        guard let url = URL(string: encodeImageURLStr) else { return }
         
-        if let owner = repo["owner"] as? [String: Any] {
-            if let imgURL = owner["avatar_url"] as? String {
-                URLSession.shared.dataTask(with: URL(string: imgURL)!) { (data, res, err) in
-                    let img = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.ImgView.image = img
-                    }
-                }.resume()
+        URLSession.shared.dataTask(with: url) { (data, res, err) in
+            if let err = err {
+                print("Error: \(err.localizedDescription)")
+                return
             }
-        }
+            guard let data = data else { return }
+            guard let userImage = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                self.ImgView.image = userImage
+            }
+        }.resume()
         
     }
     

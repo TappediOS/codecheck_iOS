@@ -11,15 +11,14 @@ import UIKit
 final class SearchGitHubRepositoriesViewController: UITableViewController, UISearchBarDelegate {
     private var presenter: SearchGitHubRepositoriesViewPresenterProtocol!
     
-    
     @IBOutlet weak var SchBr: UISearchBar!
     
     var repo: [[String: Any]]=[]
     
     var task: URLSessionTask?
-    var word: String!
-    var url: String!
-    var idx: Int!
+    var word: String = ""
+    var url: String = ""
+    var idx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,6 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
         searchBar.text = ""
         return true
     }
@@ -38,32 +36,28 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard searchBar.text != nil else { return }
         guard let searchWord = searchBar.text else { return }
         
         word = searchWord
         url = "https://api.github.com/search/repositories?q=\(searchWord)"
         
-        guard let searchURLStr = url, let encodeURLStr = searchURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL(string: encodeURLStr) else { return }
+        guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let searchURL = URL(string: encodeURLStr) else { return }
         
-
-        task = URLSession.shared.dataTask(with: url) { (data, res, err) in
+        task = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {
                 print("Error: \(err.localizedDescription)")
                 return
             }
+            guard let data = data else { return }
+            guard let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return }
+            guard let items = obj["items"] as? [[String: Any]] else { return }
             
-            if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                if let items = obj["items"] as? [[String: Any]] {
-                self.repo = items
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
+            self.repo = items
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
-        // これ呼ばなきゃリストが更新されません
         task?.resume()
     }
     
@@ -74,18 +68,16 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let rp = repo[indexPath.row]
-        cell.textLabel?.text = rp["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = rp["language"] as? String ?? ""
+        cell.textLabel?.text = rp[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
+        cell.detailTextLabel?.text = rp[GitHubSearchResultString.language.rawValue] as? String ?? ""
         cell.tag = indexPath.row
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.SchBr.resignFirstResponder()
         
         idx = indexPath.row
-        
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
         FetchDataShowVC.SerchGitHubRepVC = self
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
