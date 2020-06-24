@@ -82,7 +82,8 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
+        self.SchBr.resignFirstResponder()
+        
         idx = indexPath.row
         
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController

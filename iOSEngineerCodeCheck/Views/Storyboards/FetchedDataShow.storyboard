@@ -27,7 +27,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Uzs-rU-9vn">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Uzs-rU-9vn">
                                 <rect key="frame" x="20" y="600" width="374" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8u-nx-6z9">
@@ -77,6 +77,8 @@
                             <constraint firstItem="tWl-HI-J3p" firstAttribute="top" secondItem="k22-Nv-hRx" secondAttribute="bottom" constant="28" id="hS7-jm-4pM"/>
                             <constraint firstItem="k22-Nv-hRx" firstAttribute="centerY" secondItem="zNI-rd-6kv" secondAttribute="centerY" multiplier="0.7" id="mcS-H8-E9N"/>
                             <constraint firstItem="tWl-HI-J3p" firstAttribute="centerX" secondItem="k22-Nv-hRx" secondAttribute="centerX" id="plJ-LZ-cfJ"/>
+                            <constraint firstItem="Uzs-rU-9vn" firstAttribute="top" secondItem="i2C-Ei-a1M" secondAttribute="top" constant="600" id="rcS-xf-bW2"/>
+                            <constraint firstItem="Uzs-rU-9vn" firstAttribute="top" secondItem="tWl-HI-J3p" secondAttribute="bottom" constant="34.5" id="rrH-dR-IFF"/>
                             <constraint firstItem="Uzs-rU-9vn" firstAttribute="centerX" secondItem="tWl-HI-J3p" secondAttribute="centerX" id="sfO-od-bUY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zNI-rd-6kv"/>
