@@ -44,7 +44,8 @@ final class FetchedDataShowViewController: UIViewController {
         
         guard let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
-        guard let url = URL(string: imageURLStr) else { return }
+        guard let encodeImageURLStr = imageURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return}
+        guard let url = URL(string: encodeImageURLStr) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, res, err) in
             if let err = err {
