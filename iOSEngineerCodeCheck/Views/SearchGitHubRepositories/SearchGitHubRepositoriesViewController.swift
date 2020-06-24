@@ -15,7 +15,7 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     var searchedRepositoriesInfomation: [[String: Any]]=[]
     
-    var task: URLSessionTask?
+    var urlSesstionTask: URLSessionTask?
     var searchWord: String = ""
     var url: String = ""
     var tableViewTappedCellIndex: Int?
@@ -32,7 +32,7 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
+        urlSesstionTask?.cancel()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -44,7 +44,7 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let searchURL = URL(string: encodeURLStr) else { return }
         
-        task = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
+        urlSesstionTask = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {
                 print("Error: \(err.localizedDescription)")
                 return
@@ -58,7 +58,7 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
                 self.tableView.reloadData()
             }
         }
-        task?.resume()
+        urlSesstionTask?.resume()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
