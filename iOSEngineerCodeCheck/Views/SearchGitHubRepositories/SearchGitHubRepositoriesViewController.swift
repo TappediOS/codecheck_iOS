@@ -15,7 +15,6 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     var searchedRepositoriesInfomation: [[String: Any]]=[]
     
-    var urlSesstionTask: URLSessionTask?
     var searchWord: String = ""
     var url: String = ""
     var tableViewTappedCellIndex: Int?
@@ -32,7 +31,7 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        urlSesstionTask?.cancel()
+        presenter.didChangeSearchBar()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -40,30 +39,19 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         
         searchWord = searchBarText
         url = "https://api.github.com/search/repositories?q=\(searchWord)"
-        
-        guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        guard let searchURL = URL(string: encodeURLStr) else { return }
-        
-        urlSesstionTask = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
-            if let err = err {
-                print("Error: \(err.localizedDescription)")
-                return
-            }
-            guard let data = data else { return }
-            guard let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return }
-            guard let RepositoriesInfomation = jsonObject["items"] as? [[String: Any]] else { return }
-            
-            self.searchedRepositoriesInfomation = RepositoriesInfomation
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        urlSesstionTask?.resume()
+        presenter.searchRepositories(searchUrlStr: url)
     }
     
     func inject(with presenter: SearchGitHubRepositoriesViewPresenterProtocol) {
         self.presenter = presenter
         self.presenter.view = self
+    }
+}
+
+extension SearchGitHubRepositoriesViewController: SearchGitHubRepositoriesViewPresenterOutput {
+    func setRepositoriesInfomation(repositoriesInfo: [[String: Any]]) {
+        self.searchedRepositoriesInfomation = repositoriesInfo
+        DispatchQueue.main.async { self.tableView.reloadData() }
     }
 }
 
@@ -89,8 +77,4 @@ extension SearchGitHubRepositoriesViewController {
         FetchDataShowVC.SerchGitHubRepVC = self
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
     }
-}
-
-extension SearchGitHubRepositoriesViewController: SearchGitHubRepositoriesViewPresenterOutput {
-    
 }
