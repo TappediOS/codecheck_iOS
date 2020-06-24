@@ -70,8 +70,8 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let rp = repo[indexPath.row]
-        cell.textLabel?.text = rp["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = rp["language"] as? String ?? ""
+        cell.textLabel?.text = rp[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
+        cell.detailTextLabel?.text = rp[GitHubSearchResultString.language.rawValue] as? String ?? ""
         cell.tag = indexPath.row
         return cell
     }
