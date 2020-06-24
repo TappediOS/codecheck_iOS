@@ -54,6 +54,7 @@ final class FetchedDataShowViewController: UIViewController {
         self.repositoryForkCountLabel.text = "\(forksCount) forks"
         self.repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
         self.repositoryTitleLabel.text = repositoryTitle
+        self.repositoryTitleLabel.adjustsFontSizeToFitWidth = true
     }
 
     func fetchUserProfileImage(){
