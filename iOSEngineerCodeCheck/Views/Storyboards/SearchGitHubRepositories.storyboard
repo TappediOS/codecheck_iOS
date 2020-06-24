@@ -27,8 +27,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="full_Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRI-pm-n5W">
-                                            <rect key="frame" x="20" y="11" width="374" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="repositoryName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRI-pm-n5W">
+                                            <rect key="frame" x="20" y="11" width="256" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="mmI-0F-7IO"/>
                                             </constraints>
@@ -45,19 +45,32 @@
                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-2S-Z1G">
+                                            <rect key="frame" x="284" y="11" width="110" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="1pr-yf-CWB"/>
+                                                <constraint firstAttribute="height" constant="30" id="UJu-2Q-N0O"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="WRI-pm-n5W" firstAttribute="top" secondItem="max-lV-BDv" secondAttribute="topMargin" id="Ekb-hE-Zoe"/>
+                                        <constraint firstItem="MEd-2S-Z1G" firstAttribute="leading" secondItem="WRI-pm-n5W" secondAttribute="trailing" constant="8" id="Mp4-j2-SG4"/>
                                         <constraint firstItem="WRI-pm-n5W" firstAttribute="leading" secondItem="max-lV-BDv" secondAttribute="leadingMargin" id="RE4-6E-o0q"/>
-                                        <constraint firstItem="WRI-pm-n5W" firstAttribute="trailing" secondItem="max-lV-BDv" secondAttribute="trailingMargin" id="TW2-4r-HIh"/>
+                                        <constraint firstItem="MEd-2S-Z1G" firstAttribute="top" secondItem="max-lV-BDv" secondAttribute="topMargin" id="VWs-Wg-oCq"/>
                                         <constraint firstItem="ZNu-wh-0zA" firstAttribute="leading" secondItem="max-lV-BDv" secondAttribute="leadingMargin" id="nbl-LF-Rb6"/>
                                         <constraint firstItem="ZNu-wh-0zA" firstAttribute="trailing" secondItem="max-lV-BDv" secondAttribute="trailingMargin" id="ndR-nB-1rj"/>
+                                        <constraint firstItem="MEd-2S-Z1G" firstAttribute="trailing" secondItem="max-lV-BDv" secondAttribute="trailingMargin" id="xvX-LL-VQe"/>
                                         <constraint firstItem="ZNu-wh-0zA" firstAttribute="bottom" secondItem="max-lV-BDv" secondAttribute="bottomMargin" id="xvh-pB-myE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="fullNameLabel" destination="WRI-pm-n5W" id="Cbx-7a-Xgg"/>
+                                    <outlet property="authorLabel" destination="MEd-2S-Z1G" id="6A4-Ne-whT"/>
                                     <outlet property="languageLabel" destination="ZNu-wh-0zA" id="aYd-Id-Lq3"/>
+                                    <outlet property="repositoryName" destination="WRI-pm-n5W" id="Cbx-7a-Xgg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -88,9 +88,12 @@ extension SearchGitHubRepositoriesViewController {
         
         let repositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
         let fullName = repositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
-        let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
+        let repoName = fullName.components(separatedBy: "/").last ?? ""
+        let authorName = fullName.components(separatedBy: "/").first ?? ""
+        let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? "No language userd"
          
-        cell.fullNameLabel.text = fullName
+        cell.repositoryName.text = repoName
+        cell.authorLabel.text = authorName
         cell.languageLabel.text = language
         
         return cell

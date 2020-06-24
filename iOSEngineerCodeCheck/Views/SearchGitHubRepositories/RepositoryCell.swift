@@ -10,21 +10,27 @@ import UIKit
 
 class RepositoryCell: UITableViewCell {
     
-    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var repositoryName: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
        
         setupFullNameLabel()
         setupLanguageLabel()
+        setupLAuthorLabel()
     }
     
     func setupFullNameLabel() {
-        self.fullNameLabel.adjustsFontSizeToFitWidth = true
+        self.repositoryName.adjustsFontSizeToFitWidth = true
     }
     
     func setupLanguageLabel() {
         self.languageLabel.adjustsFontSizeToFitWidth = true
+    }
+    
+    func setupLAuthorLabel() {
+        self.authorLabel.adjustsFontSizeToFitWidth = true
     }
 }
