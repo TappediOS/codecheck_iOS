@@ -30,13 +30,18 @@ final class FetchedDataShowViewController: UIViewController {
     
     func setupRepositoryInfomationLabels() {
         let repositoryInfo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
-        let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
-        let starCount = repositoryInfo[GitHubSearchResultString.stargazers_count.rawValue] as? String ?? ""
-        let watchCount = repositoryInfo[GitHubSearchResultString.wachers_count.rawValue] as? Int ?? 0
+        let language: String? = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String
+        let starCount = repositoryInfo[GitHubSearchResultString.stargazers_count.rawValue] as? Int ?? 0
+        let watchCount = repositoryInfo[GitHubSearchResultString.watchers_count.rawValue] as? Int ?? 0
         let forksCount = repositoryInfo[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0
         let openIssuesCount = repositoryInfo[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0
         
-        repositoryLanguageLabel.text = "Written in \(language)"
+        //languageはnilの可能性があるので表示を変える必要がある
+        if let language = language {
+            repositoryLanguageLabel.text = "Written in \(language)"
+        } else {
+            repositoryLanguageLabel.text = "No language used"
+        }
         repositoryStarCountLabel.text = "\(starCount) stars"
         repositoryWatchCountLabel.text = "\(watchCount) watchers"
         repositoryForkCountLabel.text = "\(forksCount) forks"
