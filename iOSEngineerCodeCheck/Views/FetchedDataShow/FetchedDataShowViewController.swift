@@ -11,7 +11,6 @@ import UIKit
 final class FetchedDataShowViewController: UIViewController {
     private var presenter: FetchedDataShowViewPresenterProtocol!
     
-    
     @IBOutlet weak var ImgView: UIImageView!
     @IBOutlet weak var TtlLbl: UILabel!
     
@@ -37,7 +36,6 @@ final class FetchedDataShowViewController: UIViewController {
     }
     
     func getImage(){
-        
         let repo = SerchGitHubRepVC.repo[SerchGitHubRepVC.idx ?? 0]
         
         TtlLbl.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
@@ -52,7 +50,6 @@ final class FetchedDataShowViewController: UIViewController {
                 print("Error: \(err.localizedDescription)")
                 return
             }
-            
             guard let data = data else { return }
             guard let userImage = UIImage(data: data) else { return }
             

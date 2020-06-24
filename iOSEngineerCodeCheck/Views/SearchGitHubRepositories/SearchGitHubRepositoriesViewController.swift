@@ -11,7 +11,6 @@ import UIKit
 final class SearchGitHubRepositoriesViewController: UITableViewController, UISearchBarDelegate {
     private var presenter: SearchGitHubRepositoriesViewPresenterProtocol!
     
-    
     @IBOutlet weak var SchBr: UISearchBar!
     
     var repo: [[String: Any]]=[]
@@ -37,27 +36,26 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard searchBar.text != nil else { return }
         guard let searchWord = searchBar.text else { return }
         
         word = searchWord
         url = "https://api.github.com/search/repositories?q=\(searchWord)"
         
-        guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let searchURL = URL(string: encodeURLStr) else { return }
+        guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let searchURL = URL(string: encodeURLStr) else { return }
         
         task = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {
                 print("Error: \(err.localizedDescription)")
                 return
             }
+            guard let data = data else { return }
+            guard let obj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return }
+            guard let items = obj["items"] as? [[String: Any]] else { return }
             
-            if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                if let items = obj["items"] as? [[String: Any]] {
-                self.repo = items
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
+            self.repo = items
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
         task?.resume()
