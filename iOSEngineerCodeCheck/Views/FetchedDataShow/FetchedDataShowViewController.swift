@@ -81,6 +81,10 @@ extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
         guard let userImage = UIImage(data: imageData) else { return }
         DispatchQueue.main.async {
             self.userProfileImageView.image = userImage
+            self.userProfileImageView.alpha = 0
+            UIView.animate(withDuration: 0.25, animations: {
+                self.userProfileImageView.alpha = 1
+            })
         }
     }
 }
