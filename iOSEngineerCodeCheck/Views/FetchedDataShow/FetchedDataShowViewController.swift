@@ -34,6 +34,7 @@ final class FetchedDataShowViewController: UIViewController {
         let watchCount = self.searchedRepositoryInfomation[GitHubSearchResultString.watchers_count.rawValue] as? Int ?? 0
         let forksCount = self.searchedRepositoryInfomation[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0
         let openIssuesCount = self.searchedRepositoryInfomation[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0
+        let repositoryTitle = self.searchedRepositoryInfomation[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
         
         //languageはnilの可能性があるので表示を変える必要がある
         if let language = language {
@@ -45,11 +46,10 @@ final class FetchedDataShowViewController: UIViewController {
         self.repositoryWatchCountLabel.text = "\(watchCount) watchers"
         self.repositoryForkCountLabel.text = "\(forksCount) forks"
         self.repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
+        self.repositoryTitleLabel.text = repositoryTitle
     }
 
     func fetchUserProfileImage(){
-        self.repositoryTitleLabel.text = self.searchedRepositoryInfomation[GitHubSearchResultString.full_name.rawValue] as? String
-        
         guard let owner = self.searchedRepositoryInfomation[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
         guard let encodeImageURLStr = imageURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return}
