@@ -24,7 +24,11 @@ final class FetchedDataShowViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupRepositoryInfomationLabels()
+        fetchUserProfileImage()
+    }
+    
+    func setupRepositoryInfomationLabels() {
         let repositoryInfo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
         let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
         let starCount = repositoryInfo[GitHubSearchResultString.stargazers_count.rawValue] as? String ?? ""
@@ -37,8 +41,6 @@ final class FetchedDataShowViewController: UIViewController {
         repositoryWatchCountLabel.text = "\(watchCount) watchers"
         repositoryForkCountLabel.text = "\(forksCount) forks"
         repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
-        
-        fetchUserProfileImage()
     }
 
     func fetchUserProfileImage(){
