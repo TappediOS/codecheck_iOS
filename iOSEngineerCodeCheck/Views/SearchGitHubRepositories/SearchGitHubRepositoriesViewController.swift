@@ -61,6 +61,13 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         urlSesstionTask?.resume()
     }
     
+    func inject(with presenter: SearchGitHubRepositoriesViewPresenterProtocol) {
+        self.presenter = presenter
+        self.presenter.view = self
+    }
+}
+
+extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchedRepositoriesInfomation.count
     }
@@ -81,11 +88,6 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
         FetchDataShowVC.SerchGitHubRepVC = self
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
-    }
-    
-    func inject(with presenter: SearchGitHubRepositoriesViewPresenterProtocol) {
-        self.presenter = presenter
-        self.presenter.view = self
     }
 }
 
