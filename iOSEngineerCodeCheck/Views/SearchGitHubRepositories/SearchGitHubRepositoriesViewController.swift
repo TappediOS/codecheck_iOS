@@ -13,17 +13,15 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     @IBOutlet weak var gitHubRepositoriesSearchBar: UISearchBar!
     
-    var searchedRepositoriesInfomation: [[String: Any]]=[]
+    var searchedRepositoriesInfomation: [[String: Any]] = []
     
-    var urlSesstionTask: URLSessionTask?
     var searchWord: String = ""
     var url: String = ""
-    var tableViewTappedCellIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gitHubRepositoriesSearchBar.text = "GitHubのリポジトリを検索できるよー"
-        gitHubRepositoriesSearchBar.delegate = self
+        self.gitHubRepositoriesSearchBar.text = "GitHubのリポジトリを検索できるよー"
+        self.gitHubRepositoriesSearchBar.delegate = self
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -32,33 +30,15 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        urlSesstionTask?.cancel()
+        self.presenter.didChangeSearchBar()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
         
-        searchWord = searchBarText
-        url = "https://api.github.com/search/repositories?q=\(searchWord)"
-        
-        guard let encodeURLStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        guard let searchURL = URL(string: encodeURLStr) else { return }
-        
-        urlSesstionTask = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
-            if let err = err {
-                print("Error: \(err.localizedDescription)")
-                return
-            }
-            guard let data = data else { return }
-            guard let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else { return }
-            guard let RepositoriesInfomation = jsonObject["items"] as? [[String: Any]] else { return }
-            
-            self.searchedRepositoriesInfomation = RepositoriesInfomation
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        urlSesstionTask?.resume()
+        self.searchWord = searchBarText
+        self.url = "https://api.github.com/search/repositories?q=\(searchWord)"
+        self.presenter.searchRepositories(searchUrlStr: self.url)
     }
     
     func inject(with presenter: SearchGitHubRepositoriesViewPresenterProtocol) {
@@ -67,14 +47,21 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
 }
 
+extension SearchGitHubRepositoriesViewController: SearchGitHubRepositoriesViewPresenterOutput {
+    func setRepositoriesInfomation(repositoriesInfo: [[String: Any]]) {
+        self.searchedRepositoriesInfomation = repositoriesInfo
+        DispatchQueue.main.async { self.tableView.reloadData() }
+    }
+}
+
 extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchedRepositoriesInfomation.count
+        return self.searchedRepositoriesInfomation.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let RepositoryInfo = searchedRepositoriesInfomation[indexPath.row]
+        let RepositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
         cell.textLabel?.text = RepositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
         cell.detailTextLabel?.text = RepositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
         cell.tag = indexPath.row
@@ -84,13 +71,8 @@ extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.gitHubRepositoriesSearchBar.resignFirstResponder()
         
-        tableViewTappedCellIndex = indexPath.row
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
-        FetchDataShowVC.SerchGitHubRepVC = self
+        FetchDataShowVC.searchedRepositoryInfomation = self.searchedRepositoriesInfomation[indexPath.row]
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
     }
-}
-
-extension SearchGitHubRepositoriesViewController: SearchGitHubRepositoriesViewPresenterOutput {
-    
 }

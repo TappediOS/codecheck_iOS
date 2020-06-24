@@ -19,58 +19,41 @@ final class FetchedDataShowViewController: UIViewController {
     @IBOutlet weak var repositoryWatchCountLabel: UILabel!
     @IBOutlet weak var repositoryForkCountLabel: UILabel!
     @IBOutlet weak var repositoryOpenIssuesCountLabel: UILabel!
-    
-    var SerchGitHubRepVC: SearchGitHubRepositoriesViewController!
+        
+    var searchedRepositoryInfomation: [String: Any] = Dictionary()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRepositoryInfomationLabels()
-        fetchUserProfileImage()
+        self.setupRepositoryInfomationLabels()
+        self.fetchUserProfileImage()
     }
     
     func setupRepositoryInfomationLabels() {
-        let repositoryInfo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
-        let language: String? = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String
-        let starCount = repositoryInfo[GitHubSearchResultString.stargazers_count.rawValue] as? Int ?? 0
-        let watchCount = repositoryInfo[GitHubSearchResultString.watchers_count.rawValue] as? Int ?? 0
-        let forksCount = repositoryInfo[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0
-        let openIssuesCount = repositoryInfo[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0
+        let language: String? = self.searchedRepositoryInfomation[GitHubSearchResultString.language.rawValue] as? String
+        let starCount = self.searchedRepositoryInfomation[GitHubSearchResultString.stargazers_count.rawValue] as? Int ?? 0
+        let watchCount = self.searchedRepositoryInfomation[GitHubSearchResultString.watchers_count.rawValue] as? Int ?? 0
+        let forksCount = self.searchedRepositoryInfomation[GitHubSearchResultString.forks_count.rawValue] as? Int ?? 0
+        let openIssuesCount = self.searchedRepositoryInfomation[GitHubSearchResultString.open_issues_count.rawValue] as? Int ?? 0
+        let repositoryTitle = self.searchedRepositoryInfomation[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
         
         //languageはnilの可能性があるので表示を変える必要がある
         if let language = language {
-            repositoryLanguageLabel.text = "Written in \(language)"
+            self.repositoryLanguageLabel.text = "Written in \(language)"
         } else {
-            repositoryLanguageLabel.text = "No language used"
+            self.repositoryLanguageLabel.text = "No language used"
         }
-        repositoryStarCountLabel.text = "\(starCount) stars"
-        repositoryWatchCountLabel.text = "\(watchCount) watchers"
-        repositoryForkCountLabel.text = "\(forksCount) forks"
-        repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
+        self.repositoryStarCountLabel.text = "\(starCount) stars"
+        self.repositoryWatchCountLabel.text = "\(watchCount) watchers"
+        self.repositoryForkCountLabel.text = "\(forksCount) forks"
+        self.repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
+        self.repositoryTitleLabel.text = repositoryTitle
     }
 
     func fetchUserProfileImage(){
-        let repo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
-        
-        repositoryTitleLabel.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
-        
-        guard let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
+        guard let owner = self.searchedRepositoryInfomation[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
-        guard let encodeImageURLStr = imageURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return}
-        guard let url = URL(string: encodeImageURLStr) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, res, err) in
-            if let err = err {
-                print("Error: \(err.localizedDescription)")
-                return
-            }
-            guard let data = data else { return }
-            guard let userImage = UIImage(data: data) else { return }
-            
-            DispatchQueue.main.async {
-                self.userProfileImageView.image = userImage
-            }
-        }.resume()
-        
+        self.presenter.searchProfileImage(imageURLStr: imageURLStr)
     }
     
     func inject(with presenter: FetchedDataShowViewPresenterProtocol) {
@@ -80,5 +63,10 @@ final class FetchedDataShowViewController: UIViewController {
 }
 
 extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
-    
+    func setProfileImage(imageData: Data) {
+        guard let userImage = UIImage(data: imageData) else { return }
+        DispatchQueue.main.async {
+            self.userProfileImageView.image = userImage
+        }
+    }
 }
