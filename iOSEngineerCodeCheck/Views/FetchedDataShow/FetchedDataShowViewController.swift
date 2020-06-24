@@ -27,6 +27,7 @@ final class FetchedDataShowViewController: UIViewController {
         
         self.setupNavigationBar()
         self.setupRepositoryInfomationLabels()
+        self.setupUserProfileImageView()
         self.fetchUserProfileImage()
     }
     
@@ -55,6 +56,11 @@ final class FetchedDataShowViewController: UIViewController {
         self.repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
         self.repositoryTitleLabel.text = repositoryTitle
         self.repositoryTitleLabel.adjustsFontSizeToFitWidth = true
+    }
+    
+    func setupUserProfileImageView() {
+        self.userProfileImageView.layer.cornerRadius = 8
+        self.userProfileImageView.layer.masksToBounds = true
     }
 
     func fetchUserProfileImage(){
