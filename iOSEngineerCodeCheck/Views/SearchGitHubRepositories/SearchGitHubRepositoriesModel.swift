@@ -24,7 +24,7 @@ final class SearchGitHubRepositoriesModel: SearchGitHubRepositoriesModelProtocol
     var urlSesstionTask: URLSessionTask?
     
     func fetchRepositories(searchURL: URL) {
-        urlSesstionTask = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
+        self.urlSesstionTask = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {
                 print("Error: \(err.localizedDescription)")
                 return
@@ -35,10 +35,10 @@ final class SearchGitHubRepositoriesModel: SearchGitHubRepositoriesModelProtocol
             
             self.presenter.fetchedRepositoriesInfomation(repositoriesInfo: RepositoriesInfomation)
         }
-        urlSesstionTask?.resume()
+        self.urlSesstionTask?.resume()
     }
     
     func cancelURLSesstionTask() {
-        urlSesstionTask?.cancel()
+        self.urlSesstionTask?.cancel()
     }
 }

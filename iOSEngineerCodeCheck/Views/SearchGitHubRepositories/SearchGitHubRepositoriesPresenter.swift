@@ -32,14 +32,14 @@ final class SearchGitHubRepositoriesViewPresenter: SearchGitHubRepositoriesViewP
         guard let encodeURLStr = searchUrlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         guard let searchURL = URL(string: encodeURLStr) else { return }
         
-        model.fetchRepositories(searchURL: searchURL)
+        self.model.fetchRepositories(searchURL: searchURL)
     }
     
     func fetchedRepositoriesInfomation(repositoriesInfo: [[String: Any]]) {
-        view.setRepositoriesInfomation(repositoriesInfo: repositoriesInfo)
+        self.view.setRepositoriesInfomation(repositoriesInfo: repositoriesInfo)
     }
     
     func didChangeSearchBar() {
-        model.cancelURLSesstionTask()
+        self.model.cancelURLSesstionTask()
     }
 }

@@ -21,8 +21,8 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gitHubRepositoriesSearchBar.text = "GitHubのリポジトリを検索できるよー"
-        gitHubRepositoriesSearchBar.delegate = self
+        self.gitHubRepositoriesSearchBar.text = "GitHubのリポジトリを検索できるよー"
+        self.gitHubRepositoriesSearchBar.delegate = self
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -31,15 +31,15 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.didChangeSearchBar()
+        self.presenter.didChangeSearchBar()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchBarText = searchBar.text else { return }
         
-        searchWord = searchBarText
-        url = "https://api.github.com/search/repositories?q=\(searchWord)"
-        presenter.searchRepositories(searchUrlStr: url)
+        self.searchWord = searchBarText
+        self.url = "https://api.github.com/search/repositories?q=\(searchWord)"
+        self.presenter.searchRepositories(searchUrlStr: self.url)
     }
     
     func inject(with presenter: SearchGitHubRepositoriesViewPresenterProtocol) {
@@ -57,12 +57,12 @@ extension SearchGitHubRepositoriesViewController: SearchGitHubRepositoriesViewPr
 
 extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchedRepositoriesInfomation.count
+        return self.searchedRepositoriesInfomation.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let RepositoryInfo = searchedRepositoriesInfomation[indexPath.row]
+        let RepositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
         cell.textLabel?.text = RepositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
         cell.detailTextLabel?.text = RepositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
         cell.tag = indexPath.row

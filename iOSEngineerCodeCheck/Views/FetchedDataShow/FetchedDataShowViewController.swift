@@ -24,8 +24,8 @@ final class FetchedDataShowViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupRepositoryInfomationLabels()
-        fetchUserProfileImage()
+        self.setupRepositoryInfomationLabels()
+        self.fetchUserProfileImage()
     }
     
     func setupRepositoryInfomationLabels() {
@@ -38,20 +38,20 @@ final class FetchedDataShowViewController: UIViewController {
         
         //languageはnilの可能性があるので表示を変える必要がある
         if let language = language {
-            repositoryLanguageLabel.text = "Written in \(language)"
+            self.repositoryLanguageLabel.text = "Written in \(language)"
         } else {
-            repositoryLanguageLabel.text = "No language used"
+            self.repositoryLanguageLabel.text = "No language used"
         }
-        repositoryStarCountLabel.text = "\(starCount) stars"
-        repositoryWatchCountLabel.text = "\(watchCount) watchers"
-        repositoryForkCountLabel.text = "\(forksCount) forks"
-        repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
+        self.repositoryStarCountLabel.text = "\(starCount) stars"
+        self.repositoryWatchCountLabel.text = "\(watchCount) watchers"
+        self.repositoryForkCountLabel.text = "\(forksCount) forks"
+        self.repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
     }
 
     func fetchUserProfileImage(){
         let repo = SerchGitHubRepVC.searchedRepositoriesInfomation[SerchGitHubRepVC.tableViewTappedCellIndex ?? 0]
         
-        repositoryTitleLabel.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
+        self.repositoryTitleLabel.text = repo[GitHubSearchResultString.full_name.rawValue] as? String
         
         guard let owner = repo[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
