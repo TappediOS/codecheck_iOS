@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 final class FavoriteRepositoriesViewController: UIViewController {
     private var presenter: FavoriteRepositoriesViewPresenterProtocol!
@@ -29,6 +30,9 @@ final class FavoriteRepositoriesViewController: UIViewController {
         self.favoriteRepositoriesTableView.rowHeight = 75
         self.favoriteRepositoriesTableView.delegate = self
         self.favoriteRepositoriesTableView.dataSource = self
+        self.favoriteRepositoriesTableView.emptyDataSetSource = self
+        self.favoriteRepositoriesTableView.emptyDataSetDelegate = self
+        self.favoriteRepositoriesTableView.tableFooterView = UIView()
         self.favoriteRepositoriesTableView.refreshControl = self.refleshControl
         self.refleshControl.addTarget(self, action: #selector(self.reloadFavoriteRepositories(sender:)), for: .valueChanged)
     }
@@ -100,5 +104,23 @@ extension FavoriteRepositoriesViewController: UITableViewDelegate, UITableViewDa
             FetchDataShowVC.profileImage = image
         }
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
+    }
+}
+
+extension FavoriteRepositoriesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No favorite repositories"
+        let attrs = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+   
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "It will be shown when you add it to your favorites"
+        let attrs = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }    
+
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
     }
 }
