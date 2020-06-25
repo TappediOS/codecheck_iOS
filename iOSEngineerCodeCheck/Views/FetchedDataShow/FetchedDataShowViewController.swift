@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 final class FetchedDataShowViewController: UIViewController {
     private var presenter: FetchedDataShowViewPresenterProtocol!
@@ -26,6 +27,7 @@ final class FetchedDataShowViewController: UIViewController {
     var removeFavoriteRepositoryUIBarButtonItem = UIBarButtonItem()
     
     var profileImage: UIImage?
+    var addFavoriteAnimationView = AnimationView(name: "lottie_heart")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,7 @@ final class FetchedDataShowViewController: UIViewController {
         self.setupRepositoryInfomationLabels()
         self.setupUserProfileImageView()
         self.setupUIBarButtonItem()
+        self.setupAddFavoriteAnimation()
         self.fetchUserProfileImage()
         self.requestCheckFavoriteRepository()
     }
@@ -75,6 +78,15 @@ final class FetchedDataShowViewController: UIViewController {
                                                                        style: .plain, target: self, action: #selector(removeFavoriteRepository(_:)))
         self.addFFavoriteRepositoryUIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"),
                                                                        style: .plain, target: self, action: #selector(addFavoriteRepository(_:)))
+        self.removeFavoriteRepositoryUIBarButtonItem.tintColor = .systemPink
+        self.addFFavoriteRepositoryUIBarButtonItem.tintColor = .systemPink
+    }
+    
+    func setupAddFavoriteAnimation() {
+        self.addFavoriteAnimationView.contentMode = .scaleAspectFit
+        self.addFavoriteAnimationView.animationSpeed = 0.8
+        self.addFavoriteAnimationView.isUserInteractionEnabled = false
+        self.view.addSubview(addFavoriteAnimationView)
     }
     
     @objc func addFavoriteRepository(_ sender: UIButton) {
@@ -105,6 +117,27 @@ final class FetchedDataShowViewController: UIViewController {
         self.presenter.checkIsFavoriteRepository(repositoryTitle: repositoryTitle)
     }
     
+    func playAddFavoriteAnimation() {
+        let startFrame = CGRect(x: self.view.frame.width * 0.7, y: 15, width: 0, height: 0)
+        let endFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
+        
+        if self.addFavoriteAnimationView.isAnimationPlaying { self.addFavoriteAnimationView.stop() }
+        
+        self.addFavoriteAnimationView.alpha = 0
+        self.addFavoriteAnimationView.frame = startFrame
+        self.addFavoriteAnimationView.play()
+        
+        UIView.animate(withDuration: 0.85, animations: {
+            self.addFavoriteAnimationView.alpha = 1
+            self.addFavoriteAnimationView.frame = endFrame
+            self.addFavoriteAnimationView.center = self.view.center
+        }, completion: { finished in
+            UIView.animate(withDuration: 1.5, animations: {
+                self.addFavoriteAnimationView.alpha = 0
+            })
+        })
+    }
+    
     func inject(with presenter: FetchedDataShowViewPresenterProtocol) {
         self.presenter = presenter
         self.presenter.view = self
@@ -127,6 +160,8 @@ extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
     func didAddFavoriteRepository() {
         self.navigationItem.rightBarButtonItem = self.removeFavoriteRepositoryUIBarButtonItem
         self.navigationItem.rightBarButtonItem?.isEnabled = true
+        
+        self.playAddFavoriteAnimation()
     }
     
     func didRemoveFavoriteRepository() {
