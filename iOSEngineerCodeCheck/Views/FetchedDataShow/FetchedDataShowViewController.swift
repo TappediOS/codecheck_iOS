@@ -72,16 +72,19 @@ final class FetchedDataShowViewController: UIViewController {
     func setupUIBarButtonItem() {
         self.removeFavoriteRepositoryUIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"),
                                                                        style: .plain, target: self, action: #selector(removeFavoriteRepository(_:)))
-        self.addFFavoriteRepositoryUIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"),
+        self.addFFavoriteRepositoryUIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"),
                                                                        style: .plain, target: self, action: #selector(addFavoriteRepository(_:)))
     }
     
     @objc func addFavoriteRepository(_ sender: UIButton) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.presenter.requestAddFavoriteRepogitory(repositoryInfo: self.searchedRepositoryInfomation)
     }
     
     @objc func removeFavoriteRepository(_ sender: UIButton) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
+        let repositoryTitle = self.searchedRepositoryInfomation[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
+        self.presenter.requestRemoveFavoriteRepogitory(repositoryTitle: repositoryTitle)
     }
 
     func fetchUserProfileImage(){
@@ -104,6 +107,7 @@ final class FetchedDataShowViewController: UIViewController {
 
 extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
     func setProfileImage(imageData: Data) {
+        self.searchedRepositoryInfomation.updateValue(imageData, forKey: GitHubSearchResultString.profileImageData.rawValue)
         guard let userImage = UIImage(data: imageData) else { return }
         DispatchQueue.main.async {
             self.userProfileImageView.image = userImage
@@ -116,17 +120,25 @@ extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
     
     func didAddFavoriteRepository() {
         self.navigationItem.rightBarButtonItem = self.removeFavoriteRepositoryUIBarButtonItem
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     func didRemoveFavoriteRepository() {
         self.navigationItem.rightBarButtonItem = self.addFFavoriteRepositoryUIBarButtonItem
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
     
     func isFavoriteRepository(isFavorite: Bool) {
         if isFavorite {
+            print("保存されてた")
             self.navigationItem.rightBarButtonItem = self.removeFavoriteRepositoryUIBarButtonItem
         } else {
+            print("保存されてない")
             self.navigationItem.rightBarButtonItem = self.addFFavoriteRepositoryUIBarButtonItem
         }
+    }
+    
+    func errorHappenWhenAddOrRegisterFavorite() {
+        
     }
 }

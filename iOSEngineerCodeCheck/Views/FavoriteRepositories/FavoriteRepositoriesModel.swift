@@ -28,9 +28,9 @@ final class FavoriteRepositoriesModel: FavoriteRepositoriesModelProtocol {
         
         for favoliteRepo in favoriteRepositoriesObject {
             var repositoryInfo: [String: Any] = Dictionary()
-            repositoryInfo.updateValue(favoliteRepo.repositoryName, forKey: GitHubSearchResultString.full_name.rawValue)
-            repositoryInfo.updateValue(favoliteRepo.repositoryLanguage ?? "No language userd", forKey: GitHubSearchResultString.language.rawValue)
-            repositoryInfo.updateValue(favoliteRepo.repositoryProfileImageData, forKey: GitHubSearchResultString.profileImageData.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.full_name ?? "", forKey: GitHubSearchResultString.full_name.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.language ?? "No language userd", forKey: GitHubSearchResultString.language.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.profileImageData ?? NSData(), forKey: GitHubSearchResultString.profileImageData.rawValue)
             result.append(repositoryInfo)
         }
         
