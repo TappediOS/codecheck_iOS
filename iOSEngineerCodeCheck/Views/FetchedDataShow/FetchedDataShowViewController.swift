@@ -184,6 +184,8 @@ extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
     }
     
     func errorHappenWhenAddOrRegisterFavorite() {
-        
+        let errorHappenAlertView = UIAlertController(title: "Error happen", message: "Please check your internet status", preferredStyle: .alert)
+        errorHappenAlertView.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(errorHappenAlertView, animated: true, completion: nil)
     }
 }
