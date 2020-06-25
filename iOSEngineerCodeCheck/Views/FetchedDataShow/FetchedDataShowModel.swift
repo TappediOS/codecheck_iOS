@@ -31,6 +31,8 @@ final class FetchedDataShowModel: FetchedDataShowModelProtocol {
     var presenter: FetchedDataShowModelOutput!
     var realm = try! Realm()
     
+    /// プロフィール画像のデータを取得する関数
+    /// - Parameter searchURL: プロフィール画像がある保存先のURL
     func fetchProfileImageData(searchURL: URL) {
         URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {
@@ -43,6 +45,9 @@ final class FetchedDataShowModel: FetchedDataShowModelProtocol {
         }.resume()
     }
     
+    /// あるリポジトリーがRealmに登録されているかを返す関数
+    /// - Parameter repositoryTitle: リポジトリー名
+    /// - Returns: 保存されてるかどうか
     func isFavoriteRepository(repositoryTitle: String) -> Bool {
         let favoriteRepositoriesObject = self.realm.objects(FavoriteRepository.self)
         
@@ -53,6 +58,8 @@ final class FetchedDataShowModel: FetchedDataShowModelProtocol {
         return false
     }
     
+    /// Realmにお気に入りリポジトリーを追加する
+    /// - Parameter repositoryInfo: 追加するリポジトリー情報
     func addFavoriteRepogitory(repositoryInfo: [String: Any]) {
         let repositoryObjct = FavoriteRepository()
         
@@ -90,6 +97,8 @@ final class FetchedDataShowModel: FetchedDataShowModelProtocol {
         }
     }
     
+    /// Realmからあるリポジトリーを削除する関数
+    /// - Parameter repositoryTitle: 削除したいリポジトリー名
     func removeFavoriteRepogitory(repositoryTitle: String) {
         let favoriteRepositoriesObject = self.realm.objects(FavoriteRepository.self)
         

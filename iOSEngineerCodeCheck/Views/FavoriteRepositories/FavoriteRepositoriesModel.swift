@@ -22,6 +22,8 @@ final class FavoriteRepositoriesModel: FavoriteRepositoriesModelProtocol {
     var presenter: FavoriteRepositoriesModelOutput!
     var realm = try! Realm()
     
+    /// Realmからお気に入りリポジトリーを全て取り出す
+    /// - Returns: お気に入りされた全てのリポジトリー
     func getFavoriteRepositories() -> [[String: Any]] {
         let favoriteRepositoriesObject = self.realm.objects(FavoriteRepository.self)
         var result: [[String: Any]] = []

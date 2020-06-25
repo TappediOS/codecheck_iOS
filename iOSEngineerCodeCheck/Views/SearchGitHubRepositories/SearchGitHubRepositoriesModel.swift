@@ -23,6 +23,8 @@ final class SearchGitHubRepositoriesModel: SearchGitHubRepositoriesModelProtocol
     var presenter: SearchGitHubRepositoriesModelOutput!
     var urlSesstionTask: URLSessionTask?
     
+    /// リポジトリーを検索して結果を返す関数
+    /// - Parameter searchURL: 検索するURL
     func fetchRepositories(searchURL: URL) {
         self.urlSesstionTask = URLSession.shared.dataTask(with: searchURL) { (data, res, err) in
             if let err = err {

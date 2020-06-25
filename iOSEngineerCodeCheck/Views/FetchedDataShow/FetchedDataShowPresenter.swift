@@ -35,6 +35,8 @@ final class FetchedDataShowViewPresenter: FetchedDataShowViewPresenterProtocol, 
         self.model.presenter = self
     }
     
+    /// プロフィールダウンロードしてってModelに伝える関数
+    /// - Parameter imageURLStr: ダウンロード先のURL
     func searchProfileImage(imageURLStr: String) {
         guard let encodeImageURLStr = imageURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return}
         guard let url = URL(string: encodeImageURLStr) else { return }
@@ -42,10 +44,14 @@ final class FetchedDataShowViewPresenter: FetchedDataShowViewPresenterProtocol, 
         self.model.fetchProfileImageData(searchURL: url)
     }
     
+    /// プロフィール画像ダウンロード終わったよってviewに伝える関数
+    /// - Parameter fetchedImageData: ダウンロードした画像データ
     func fetchedProfileImageData(fetchedImageData: Data) {
         self.view.setProfileImage(imageData: fetchedImageData)
     }
     
+    /// 引数のリポジトリーが既にお気に入り登録されているかを確認してってmodelに伝える関数
+    /// - Parameter repositoryTitle: リポジトリー名
     func checkIsFavoriteRepository(repositoryTitle: String) {
         let isFavorite = model.isFavoriteRepository(repositoryTitle: repositoryTitle)
         self.view.isFavoriteRepository(isFavorite: isFavorite)
