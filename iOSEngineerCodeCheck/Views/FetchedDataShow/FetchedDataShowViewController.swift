@@ -89,11 +89,15 @@ final class FetchedDataShowViewController: UIViewController {
         self.view.addSubview(addFavoriteAnimationView)
     }
     
+    /// お気に入り登録ボタン押された時の処理
+    /// - Parameter sender: ボタン
     @objc func addFavoriteRepository(_ sender: UIButton) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.presenter.requestAddFavoriteRepogitory(repositoryInfo: self.searchedRepositoryInfomation)
     }
     
+    /// お気に入り削除するボタン押された時の処理
+    /// - Parameter sender: ボタン
     @objc func removeFavoriteRepository(_ sender: UIButton) {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         let repositoryTitle = self.searchedRepositoryInfomation[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
@@ -101,6 +105,7 @@ final class FetchedDataShowViewController: UIViewController {
     }
 
     func fetchUserProfileImage(){
+        //MARK:- 引数として与えられてたらそれを使う
         if let profileImage = self.profileImage {
             self.userProfileImageView.image = profileImage
             return
@@ -117,6 +122,7 @@ final class FetchedDataShowViewController: UIViewController {
         self.presenter.checkIsFavoriteRepository(repositoryTitle: repositoryTitle)
     }
     
+    /// お気に入り登録した時のアニメーション再生をする
     func playAddFavoriteAnimation() {
         let startFrame = CGRect(x: self.view.frame.width * 0.7, y: 15, width: 0, height: 0)
         let endFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)

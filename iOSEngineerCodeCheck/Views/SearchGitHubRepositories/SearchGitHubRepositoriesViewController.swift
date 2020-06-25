@@ -69,6 +69,9 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
 }
 
 extension SearchGitHubRepositoriesViewController: SearchGitHubRepositoriesViewPresenterOutput {
+    
+    /// 検索されたリポジトリーを反映する関数
+    /// - Parameter repositoriesInfo: 検索結果のリポジトリー群
     func setRepositoriesInfomation(repositoriesInfo: [[String: Any]]) {
         self.searchedRepositoriesInfomation = repositoriesInfo
         DispatchQueue.main.async { self.tableView.reloadData() }
