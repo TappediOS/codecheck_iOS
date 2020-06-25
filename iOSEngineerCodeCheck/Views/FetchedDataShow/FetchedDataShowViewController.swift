@@ -122,9 +122,10 @@ final class FetchedDataShowViewController: UIViewController {
         let endFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
         
         if self.addFavoriteAnimationView.isAnimationPlaying { self.addFavoriteAnimationView.stop() }
-        self.addFavoriteAnimationView.play()
+        
         self.addFavoriteAnimationView.alpha = 0
         self.addFavoriteAnimationView.frame = startFrame
+        self.addFavoriteAnimationView.play()
         
         UIView.animate(withDuration: 0.85, animations: {
             self.addFavoriteAnimationView.alpha = 1
