@@ -79,8 +79,6 @@ extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath) as? RepositoryCell else { return UITableViewCell() }
         
-        
-        
         let repositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
         let fullName = repositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
         let repoName = fullName.components(separatedBy: "/").last ?? ""

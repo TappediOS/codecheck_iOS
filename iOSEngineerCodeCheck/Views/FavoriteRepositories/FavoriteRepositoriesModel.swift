@@ -28,9 +28,21 @@ final class FavoriteRepositoriesModel: FavoriteRepositoriesModelProtocol {
         
         for favoliteRepo in favoriteRepositoriesObject {
             var repositoryInfo: [String: Any] = Dictionary()
+            
+            repositoryInfo.updateValue(favoliteRepo.language ?? "No language used", forKey: GitHubSearchResultString.language.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.stargazers_count, forKey: GitHubSearchResultString.stargazers_count.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.watchers_count, forKey: GitHubSearchResultString.watchers_count.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.forks_count, forKey: GitHubSearchResultString.forks_count.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.open_issues_count, forKey: GitHubSearchResultString.open_issues_count.rawValue)
             repositoryInfo.updateValue(favoliteRepo.full_name ?? "", forKey: GitHubSearchResultString.full_name.rawValue)
-            repositoryInfo.updateValue(favoliteRepo.language ?? "No language userd", forKey: GitHubSearchResultString.language.rawValue)
-            repositoryInfo.updateValue(favoliteRepo.profileImageData ?? NSData(), forKey: GitHubSearchResultString.profileImageData.rawValue)
+            repositoryInfo.updateValue(favoliteRepo.avatar_url ?? "", forKey: GitHubSearchResultString.avatar_url.rawValue)
+            
+            let imageNSData = favoliteRepo.profileImageData
+            if let nsData = imageNSData {
+                let imageData = nsData as Data
+                repositoryInfo.updateValue(imageData, forKey: GitHubSearchResultString.profileImageData.rawValue)
+            }
+
             result.append(repositoryInfo)
         }
         
