@@ -23,6 +23,12 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testMainTabBarVCsCount() {
+        let mainTabBarStoryBoard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        let mainTabBarController = mainTabBarStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
+        XCTAssertEqual(mainTabBarController.viewControllers?.count, 2)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
