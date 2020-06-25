@@ -67,7 +67,6 @@ extension FavoriteRepositoriesViewController: FavoriteRepositoriesViewPresenterO
 
 extension FavoriteRepositoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.favoliteRepositoriesInfomation.count)
         return self.favoliteRepositoriesInfomation.count
     }
     
