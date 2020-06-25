@@ -24,8 +24,16 @@ final class FetchedDataShowViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupNavigationBar()
         self.setupRepositoryInfomationLabels()
+        self.setupUserProfileImageView()
         self.fetchUserProfileImage()
+    }
+    
+    func setupNavigationBar() {
+        self.navigationItem.title = "Result"
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     func setupRepositoryInfomationLabels() {
@@ -47,6 +55,12 @@ final class FetchedDataShowViewController: UIViewController {
         self.repositoryForkCountLabel.text = "\(forksCount) forks"
         self.repositoryOpenIssuesCountLabel.text = "\(openIssuesCount) open issues"
         self.repositoryTitleLabel.text = repositoryTitle
+        self.repositoryTitleLabel.adjustsFontSizeToFitWidth = true
+    }
+    
+    func setupUserProfileImageView() {
+        self.userProfileImageView.layer.cornerRadius = 8
+        self.userProfileImageView.layer.masksToBounds = true
     }
 
     func fetchUserProfileImage(){
@@ -67,6 +81,10 @@ extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
         guard let userImage = UIImage(data: imageData) else { return }
         DispatchQueue.main.async {
             self.userProfileImageView.image = userImage
+            self.userProfileImageView.alpha = 0
+            UIView.animate(withDuration: 0.25, animations: {
+                self.userProfileImageView.alpha = 1
+            })
         }
     }
 }

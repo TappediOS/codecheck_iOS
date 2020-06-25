@@ -20,17 +20,34 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gitHubRepositoriesSearchBar.text = "GitHubのリポジトリを検索できるよー"
+        
+        setupTableView()
+        setupNavigationBar()
+        setupSearchBar()
+    }
+    
+    func setupTableView() {
+        self.tableView.rowHeight = 75
+    }
+    
+    func setupNavigationBar() {
+        self.navigationItem.title = "Search"
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func setupSearchBar() {
+        self.gitHubRepositoriesSearchBar.placeholder = "Repository"
         self.gitHubRepositoriesSearchBar.delegate = self
     }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.text = ""
-        return true
-    }
-    
+        
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.presenter.didChangeSearchBar()
+    }
+    
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard self.gitHubRepositoriesSearchBar.isFirstResponder else { return }
+        self.gitHubRepositoriesSearchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -60,11 +77,20 @@ extension SearchGitHubRepositoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let RepositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
-        cell.textLabel?.text = RepositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
-        cell.detailTextLabel?.text = RepositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? ""
-        cell.tag = indexPath.row
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath) as? RepositoryCell else { return UITableViewCell() }
+        
+        
+        
+        let repositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
+        let fullName = repositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
+        let repoName = fullName.components(separatedBy: "/").last ?? ""
+        let authorName = fullName.components(separatedBy: "/").first ?? ""
+        let language = repositoryInfo[GitHubSearchResultString.language.rawValue] as? String ?? "No language userd"
+         
+        cell.repositoryName.text = repoName
+        cell.authorLabel.text = authorName
+        cell.languageLabel.text = language
+        
         return cell
     }
     
