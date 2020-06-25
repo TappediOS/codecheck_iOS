@@ -14,13 +14,12 @@ class FavoriteRepositoryCell: UITableViewCell {
     @IBOutlet weak var repositoryNameLabel: UILabel!
     @IBOutlet weak var languageNameLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
            
-        setupProfileImageView()
-        setupRepositoryNameLabel()
-        setupLanguageNameLabel()
+        self.setupProfileImageView()
+        self.setupRepositoryNameLabel()
+        self.setupLanguageNameLabel()
     }
         
     func setupProfileImageView() {

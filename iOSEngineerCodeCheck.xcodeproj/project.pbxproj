@@ -292,8 +292,8 @@
 			children = (
 				BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */,
 				BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */,
-				BF65C21C24A1AD2500C03EDA /* FetchedDataShowModel.swift */,
 				BF65C21E24A1AD2C00C03EDA /* FetchedDataShowPresenter.swift */,
+				BF65C21C24A1AD2500C03EDA /* FetchedDataShowModel.swift */,
 				BFF1331724A49B820006DC55 /* lottie_heart.json */,
 			);
 			path = FetchedDataShow;
@@ -304,8 +304,8 @@
 			children = (
 				BF65C22124A1B02D00C03EDA /* SearchGitHubRepositoriesViewController.swift */,
 				BF65C22324A1B03500C03EDA /* SearchGitHubRepositoriesBuilder.swift */,
-				BF65C22524A1B03900C03EDA /* SearchGitHubRepositoriesModel.swift */,
 				BF65C22724A1B04200C03EDA /* SearchGitHubRepositoriesPresenter.swift */,
+				BF65C22524A1B03900C03EDA /* SearchGitHubRepositoriesModel.swift */,
 				BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */,
 				BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */,
 			);

@@ -20,10 +20,9 @@ final class FavoriteRepositoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        setupNavigationBar()
-        
-        requestFavoriteRepositories()
+        self.setupTableView()
+        self.setupNavigationBar()
+        self.requestFavoriteRepositories()
     }
     
     func setupTableView() {
@@ -68,13 +67,11 @@ extension FavoriteRepositoriesViewController: FavoriteRepositoriesViewPresenterO
     }
 }
 
-
 extension FavoriteRepositoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.favoliteRepositoriesInfomation.count
     }
     
-    //Cellを返す
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.favoriteRepositoriesTableView.dequeueReusableCell(withIdentifier: "FavoriteRepositoryCell", for: indexPath) as? FavoriteRepositoryCell else { return UITableViewCell() }
         

@@ -22,9 +22,9 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
-        setupNavigationBar()
-        setupSearchBar()
+        self.setupTableView()
+        self.setupNavigationBar()
+        self.setupSearchBar()
     }
     
     func setupTableView() {
