@@ -28,6 +28,11 @@
 		BF390DCB24A45B4000E0BB08 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF390DCF24A45F5000E0BB08 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */; };
 		BF390DD124A4617000E0BB08 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */; };
+		BF390DD424A462C300E0BB08 /* FavoriteRepositories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF390DD324A462C300E0BB08 /* FavoriteRepositories.storyboard */; };
+		BF390DD624A462D200E0BB08 /* FavoriteRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DD524A462D200E0BB08 /* FavoriteRepositoriesViewController.swift */; };
+		BF390DD824A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DD724A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift */; };
+		BF390DDA24A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DD924A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift */; };
+		BF390DDC24A462F000E0BB08 /* FavoriteRepositoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DDB24A462F000E0BB08 /* FavoriteRepositoriesModel.swift */; };
 		BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */; };
 		BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */; };
 		BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */; };
@@ -98,6 +103,11 @@
 		BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
+		BF390DD324A462C300E0BB08 /* FavoriteRepositories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteRepositories.storyboard; sourceTree = "<group>"; };
+		BF390DD524A462D200E0BB08 /* FavoriteRepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesViewController.swift; sourceTree = "<group>"; };
+		BF390DD724A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesBuilder.swift; sourceTree = "<group>"; };
+		BF390DD924A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesPresenter.swift; sourceTree = "<group>"; };
+		BF390DDB24A462F000E0BB08 /* FavoriteRepositoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesModel.swift; sourceTree = "<group>"; };
 		BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FetchedDataShow.storyboard; sourceTree = "<group>"; };
 		BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowViewController.swift; sourceTree = "<group>"; };
 		BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowBuilder.swift; sourceTree = "<group>"; };
@@ -156,6 +166,7 @@
 			children = (
 				BF390DCD24A45EBA00E0BB08 /* MainTabBar */,
 				BF65C22024A1B01500C03EDA /* SearchGitHubRepositories */,
+				BF390DD224A4629C00E0BB08 /* FavoriteRepositories */,
 				BF65C21724A1ACF400C03EDA /* FetchedDataShow */,
 				BF29E9DE249F26FB00325994 /* Sample */,
 				BF29E9DD249F26F900325994 /* Storyboards */,
@@ -222,6 +233,7 @@
 				BF29E9EE249F283A00325994 /* Sample.storyboard */,
 				BF65C22924A1B0A400C03EDA /* SearchGitHubRepositories.storyboard */,
 				BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */,
+				BF390DD324A462C300E0BB08 /* FavoriteRepositories.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -254,6 +266,17 @@
 				BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		BF390DD224A4629C00E0BB08 /* FavoriteRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				BF390DD524A462D200E0BB08 /* FavoriteRepositoriesViewController.swift */,
+				BF390DD724A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift */,
+				BF390DD924A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift */,
+				BF390DDB24A462F000E0BB08 /* FavoriteRepositoriesModel.swift */,
+			);
+			path = FavoriteRepositories;
 			sourceTree = "<group>";
 		};
 		BF65C21724A1ACF400C03EDA /* FetchedDataShow */ = {
@@ -444,6 +467,7 @@
 				BF390DD124A4617000E0BB08 /* MainTabBar.storyboard in Resources */,
 				BF29E9EF249F283A00325994 /* Sample.storyboard in Resources */,
 				BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */,
+				BF390DD424A462C300E0BB08 /* FavoriteRepositories.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +518,8 @@
 			files = (
 				BF29E9EA249F27C400325994 /* SampleViewController.swift in Sources */,
 				BF29E9E8249F27BA00325994 /* SampleViewBuilder.swift in Sources */,
+				BF390DDC24A462F000E0BB08 /* FavoriteRepositoriesModel.swift in Sources */,
+				BF390DD824A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift in Sources */,
 				BF65C22224A1B02D00C03EDA /* SearchGitHubRepositoriesViewController.swift in Sources */,
 				BF29E9E6249F27A300325994 /* SampleModel.swift in Sources */,
 				BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */,
@@ -505,11 +531,13 @@
 				BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */,
 				BF29E9D5249F267700325994 /* Routes.swift in Sources */,
 				BF29E9E2249F275600325994 /* ExUIViewController.swift in Sources */,
+				BF390DDA24A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift in Sources */,
 				BF390DBB24A2FA1000E0BB08 /* GitHubSearchResultString.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */,
 				BF65C22424A1B03500C03EDA /* SearchGitHubRepositoriesBuilder.swift in Sources */,
 				BF390DCF24A45F5000E0BB08 /* MainTabBarController.swift in Sources */,
+				BF390DD624A462D200E0BB08 /* FavoriteRepositoriesViewController.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				BF29E9E4249F277600325994 /* ExUIView.swift in Sources */,
 				BF65C21F24A1AD2C00C03EDA /* FetchedDataShowPresenter.swift in Sources */,
