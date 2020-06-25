@@ -130,10 +130,8 @@ extension FetchedDataShowViewController: FetchedDataShowViewPresenterOutput {
     
     func isFavoriteRepository(isFavorite: Bool) {
         if isFavorite {
-            print("保存されてた")
             self.navigationItem.rightBarButtonItem = self.removeFavoriteRepositoryUIBarButtonItem
         } else {
-            print("保存されてない")
             self.navigationItem.rightBarButtonItem = self.addFFavoriteRepositoryUIBarButtonItem
         }
     }
