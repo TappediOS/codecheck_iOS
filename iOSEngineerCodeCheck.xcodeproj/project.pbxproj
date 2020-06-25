@@ -18,6 +18,14 @@
 		BF29E9EF249F283A00325994 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF29E9EE249F283A00325994 /* Sample.storyboard */; };
 		BF390DBB24A2FA1000E0BB08 /* GitHubSearchResultString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */; };
 		BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */; };
+		BF390DC024A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */; };
+		BF390DC124A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DC424A45B2900E0BB08 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC324A45B2900E0BB08 /* Lottie.framework */; };
+		BF390DC524A45B2900E0BB08 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC324A45B2900E0BB08 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DC724A45B3300E0BB08 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC624A45B3300E0BB08 /* Realm.framework */; };
+		BF390DC824A45B3300E0BB08 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC624A45B3300E0BB08 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DCA24A45B4000E0BB08 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; };
+		BF390DCB24A45B4000E0BB08 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */; };
 		BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */; };
 		BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */; };
@@ -53,6 +61,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF390DC224A45B1F00E0BB08 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF390DC824A45B3300E0BB08 /* Realm.framework in Embed Frameworks */,
+				BF390DC124A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Embed Frameworks */,
+				BF390DCB24A45B4000E0BB08 /* RealmSwift.framework in Embed Frameworks */,
+				BF390DC524A45B2900E0BB08 /* Lottie.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BF29E9D4249F267700325994 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		BF29E9DF249F272700325994 /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
@@ -65,6 +90,10 @@
 		BF29E9EE249F283A00325994 /* Sample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sample.storyboard; sourceTree = "<group>"; };
 		BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearchResultString.swift; sourceTree = "<group>"; };
 		BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
+		BF390DC324A45B2900E0BB08 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		BF390DC624A45B3300E0BB08 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FetchedDataShow.storyboard; sourceTree = "<group>"; };
 		BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowViewController.swift; sourceTree = "<group>"; };
 		BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowBuilder.swift; sourceTree = "<group>"; };
@@ -94,6 +123,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF390DC724A45B3300E0BB08 /* Realm.framework in Frameworks */,
+				BF390DC024A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Frameworks */,
+				BF390DCA24A45B4000E0BB08 /* RealmSwift.framework in Frameworks */,
+				BF390DC424A45B2900E0BB08 /* Lottie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +231,17 @@
 			path = Sample;
 			sourceTree = "<group>";
 		};
+		BF390DBE24A45B1E00E0BB08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */,
+				BF390DC624A45B3300E0BB08 /* Realm.framework */,
+				BF390DC324A45B2900E0BB08 /* Lottie.framework */,
+				BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF65C21724A1ACF400C03EDA /* FetchedDataShow */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +273,7 @@
 				BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */,
 				BFD945FF244DC5EB0012785A /* iOSEngineerCodeCheckUITests */,
 				BFD945DC244DC5E80012785A /* Products */,
+				BF390DBE24A45B1E00E0BB08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,6 +328,8 @@
 				BFD945D7244DC5E80012785A /* Sources */,
 				BFD945D8244DC5E80012785A /* Frameworks */,
 				BFD945D9244DC5E80012785A /* Resources */,
+				BF390DC224A45B1F00E0BB08 /* Embed Frameworks */,
+				BF390DCC24A45B5A00E0BB08 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -400,6 +447,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BF390DCC24A45B5A00E0BB08 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFD945D7244DC5E80012785A /* Sources */ = {
@@ -592,6 +663,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,6 +685,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
