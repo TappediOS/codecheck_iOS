@@ -10,8 +10,8 @@ import UIKit
 
 struct Routes {
     static func decideRootViewController() -> UIViewController {
-        let serchGitHubRepVC = SearchGitHubRepositoriesViewBuilder.create()
-        let mainNavigationController = UINavigationController(rootViewController: serchGitHubRepVC)
-        return mainNavigationController
+        let mainTabBarStoryBoard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        let mainTabBarController = mainTabBarStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
+        return mainTabBarController
     }
 }

@@ -26,6 +26,8 @@
 		BF390DC824A45B3300E0BB08 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC624A45B3300E0BB08 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF390DCA24A45B4000E0BB08 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; };
 		BF390DCB24A45B4000E0BB08 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DCF24A45F5000E0BB08 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */; };
+		BF390DD124A4617000E0BB08 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */; };
 		BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */; };
 		BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */; };
 		BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */; };
@@ -94,6 +96,8 @@
 		BF390DC324A45B2900E0BB08 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
 		BF390DC624A45B3300E0BB08 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FetchedDataShow.storyboard; sourceTree = "<group>"; };
 		BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowViewController.swift; sourceTree = "<group>"; };
 		BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowBuilder.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		BF29E9D6249F269800325994 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF390DCD24A45EBA00E0BB08 /* MainTabBar */,
 				BF65C22024A1B01500C03EDA /* SearchGitHubRepositories */,
 				BF65C21724A1ACF400C03EDA /* FetchedDataShow */,
 				BF29E9DE249F26FB00325994 /* Sample */,
@@ -216,6 +221,7 @@
 				BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */,
 				BF29E9EE249F283A00325994 /* Sample.storyboard */,
 				BF65C22924A1B0A400C03EDA /* SearchGitHubRepositories.storyboard */,
+				BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -240,6 +246,14 @@
 				BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF390DCD24A45EBA00E0BB08 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
 			sourceTree = "<group>";
 		};
 		BF65C21724A1ACF400C03EDA /* FetchedDataShow */ = {
@@ -427,6 +441,7 @@
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BF65C22A24A1B0A400C03EDA /* SearchGitHubRepositories.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
+				BF390DD124A4617000E0BB08 /* MainTabBar.storyboard in Resources */,
 				BF29E9EF249F283A00325994 /* Sample.storyboard in Resources */,
 				BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */,
 			);
@@ -494,6 +509,7 @@
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */,
 				BF65C22424A1B03500C03EDA /* SearchGitHubRepositoriesBuilder.swift in Sources */,
+				BF390DCF24A45F5000E0BB08 /* MainTabBarController.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				BF29E9E4249F277600325994 /* ExUIView.swift in Sources */,
 				BF65C21F24A1AD2C00C03EDA /* FetchedDataShowPresenter.swift in Sources */,
