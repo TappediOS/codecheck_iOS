@@ -1,5 +1,6 @@
 # 株式会社ゆめみ iOS エンジニアコードチェック課題
 
+
 ## 概要
 
 本プロジェクトは株式会社ゆめみ（以下弊社）が、弊社に iOS エンジニアを希望する方に出す課題のベースプロジェクトです。本課題が与えられた方は、下記の概要を詳しく読んだ上で課題を取り組んでください。
@@ -35,3 +36,25 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 | 中途／経験者 | 必須 | 必須 | 選択 |
 
 課題が完成したら、リポジトリーのアドレスを教えてください。
+
+<br>
+<br>
+
+# 課題完了
+
+## 使用ライブラリ
+
++ [RealmSwift](https://github.com/realm/realm-cocoa)
++ [Lottie](https://github.com/airbnb/lottie-ios)
++ [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
+
+上記のライブラリはCarthageを使用して利用した
+
+## 追加した機能
+
+リポジトリーのお気に入り機能を追加した。
+使い方は，リポジトリーの詳細表示画面（初期コードではViewController2）において，ナビゲーションアイテムのハートボタンをタップする。
+
+一覧は以下の画像のように表示される
+
+![お気に入り一覧表示](README_Images/favoriteRepositories.jpeg)
