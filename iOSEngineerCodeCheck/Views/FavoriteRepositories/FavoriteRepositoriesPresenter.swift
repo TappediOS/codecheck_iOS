@@ -10,10 +10,12 @@ import Foundation
 
 protocol FavoriteRepositoriesViewPresenterProtocol {
     var view: FavoriteRepositoriesViewPresenterOutput! { get set }
+    
+    func requestFavoriteRepositories()
 }
 
 protocol FavoriteRepositoriesViewPresenterOutput {
-    
+    func setTableViewFavoliteRepositoriesInfo(RepoInfo: [[String: Any]])
 }
 
 final class FavoriteRepositoriesViewPresenter: FavoriteRepositoriesViewPresenterProtocol, FavoriteRepositoriesModelOutput {
@@ -23,5 +25,10 @@ final class FavoriteRepositoriesViewPresenter: FavoriteRepositoriesViewPresenter
     init(model: FavoriteRepositoriesModelProtocol) {
         self.model = model
         self.model.presenter = self
+    }
+    
+    func requestFavoriteRepositories() {
+        let repositoriesData = self.model.getFavoriteRepositories()
+        self.view.setTableViewFavoliteRepositoriesInfo(RepoInfo: repositoriesData)
     }
 }

@@ -13,11 +13,15 @@ final class FavoriteRepositoriesViewController: UIViewController {
     
     @IBOutlet weak var favoriteRepositoriesTableView: UITableView!
     
+    var favoliteRepositoriesInfomation: [[String: Any]] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupNavigationBar()
+        
+        self.presenter.requestFavoriteRepositories()
     }
     
     func setupTableView() {
@@ -37,5 +41,7 @@ final class FavoriteRepositoriesViewController: UIViewController {
 }
 
 extension FavoriteRepositoriesViewController: FavoriteRepositoriesViewPresenterOutput {
-    
+    func setTableViewFavoliteRepositoriesInfo(RepoInfo: [[String: Any]]) {
+        self.favoliteRepositoriesInfomation = RepoInfo
+    }
 }

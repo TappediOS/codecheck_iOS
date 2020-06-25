@@ -17,4 +17,5 @@ enum GitHubSearchResultString: String {
     case full_name = "full_name"
     case owner = "owner"
     case avatar_url = "avatar_url"
+    case profileImageData = "profileImageData"
 }
