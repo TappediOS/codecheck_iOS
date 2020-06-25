@@ -21,7 +21,11 @@ class MainTabBarController: UITabBarController {
         serchGitHubRepVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         let serchGitHubRepVCNavigationController = UINavigationController(rootViewController: serchGitHubRepVC)
         
-        self.viewControllers = [serchGitHubRepVCNavigationController]
+        let favoriteRepositoriesVC = FavoriteRepositoriesViewBuilder.create()
+        favoriteRepositoriesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites , tag: 1)
+        let favoriteRepositoriesVCNavigationController = UINavigationController(rootViewController: favoriteRepositoriesVC)
+        
+        self.viewControllers = [serchGitHubRepVCNavigationController, favoriteRepositoriesVCNavigationController]
         
         
     }
