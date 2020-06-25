@@ -75,6 +75,8 @@ final class FetchedDataShowViewController: UIViewController {
                                                                        style: .plain, target: self, action: #selector(removeFavoriteRepository(_:)))
         self.addFFavoriteRepositoryUIBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"),
                                                                        style: .plain, target: self, action: #selector(addFavoriteRepository(_:)))
+        self.removeFavoriteRepositoryUIBarButtonItem.tintColor = .systemPink
+        self.addFFavoriteRepositoryUIBarButtonItem.tintColor = .systemPink
     }
     
     @objc func addFavoriteRepository(_ sender: UIButton) {

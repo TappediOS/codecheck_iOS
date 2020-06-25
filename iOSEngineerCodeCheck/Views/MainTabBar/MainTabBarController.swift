@@ -25,6 +25,7 @@ class MainTabBarController: UITabBarController {
         favoriteRepositoriesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites , tag: 1)
         let favoriteRepositoriesVCNavigationController = UINavigationController(rootViewController: favoriteRepositoriesVC)
         
+        self.tabBar.tintColor = .systemPink
         self.viewControllers = [serchGitHubRepVCNavigationController, favoriteRepositoriesVCNavigationController]
         
         
