@@ -12,10 +12,14 @@ protocol FetchedDataShowViewPresenterProtocol {
     var view: FetchedDataShowViewPresenterOutput! { get set }
     
     func searchProfileImage(imageURLStr: String)
+    func checkIsFavoriteRepository(repositoryTitle: String)
 }
 
 protocol FetchedDataShowViewPresenterOutput {
     func setProfileImage(imageData: Data)
+    func didAddFavoriteRepository()
+    func didRemoveFavoriteRepository()
+    func isFavoriteRepository(isFavorite: Bool)
 }
 
 final class FetchedDataShowViewPresenter: FetchedDataShowViewPresenterProtocol, FetchedDataShowModelOutput {
@@ -36,6 +40,11 @@ final class FetchedDataShowViewPresenter: FetchedDataShowViewPresenterProtocol, 
     
     func fetchedProfileImageData(fetchedImageData: Data) {
         self.view.setProfileImage(imageData: fetchedImageData)
+    }
+    
+    func checkIsFavoriteRepository(repositoryTitle: String) {
+        let isFavorite = model.isFavoriteRepository(repositoryTitle: repositoryTitle)
+        self.view.isFavoriteRepository(isFavorite: isFavorite)
     }
 }
 
