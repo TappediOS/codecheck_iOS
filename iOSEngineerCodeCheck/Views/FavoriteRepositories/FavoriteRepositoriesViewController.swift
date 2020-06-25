@@ -91,8 +91,15 @@ extension FavoriteRepositoriesViewController: UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // セルの選択を解除する
         tableView.deselectRow(at: indexPath, animated: true)
-       
+        
+        let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
+        FetchDataShowVC.searchedRepositoryInfomation = self.favoliteRepositoriesInfomation[indexPath.row]
+        
+        let profileImageData = self.favoliteRepositoriesInfomation[indexPath.row][GitHubSearchResultString.profileImageData.rawValue] as? Data
+        if let data = profileImageData, let image = UIImage(data: data) {
+            FetchDataShowVC.profileImage = image
+        }
+        self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
     }
 }

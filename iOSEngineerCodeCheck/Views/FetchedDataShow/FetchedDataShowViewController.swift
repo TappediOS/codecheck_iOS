@@ -25,6 +25,7 @@ final class FetchedDataShowViewController: UIViewController {
     var addFFavoriteRepositoryUIBarButtonItem = UIBarButtonItem()
     var removeFavoriteRepositoryUIBarButtonItem = UIBarButtonItem()
     
+    var profileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,11 @@ final class FetchedDataShowViewController: UIViewController {
     }
 
     func fetchUserProfileImage(){
+        if let profileImage = self.profileImage {
+            self.userProfileImageView.image = profileImage
+            return
+        }
+        
         guard let owner = self.searchedRepositoryInfomation[GitHubSearchResultString.owner.rawValue] as? [String: Any] else { return }
         guard let imageURLStr = owner[GitHubSearchResultString.avatar_url.rawValue] as? String else { return }
         
