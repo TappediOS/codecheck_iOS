@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 final class SearchGitHubRepositoriesViewController: UITableViewController, UISearchBarDelegate {
     private var presenter: SearchGitHubRepositoriesViewPresenterProtocol!
@@ -28,6 +29,9 @@ final class SearchGitHubRepositoriesViewController: UITableViewController, UISea
     
     func setupTableView() {
         self.tableView.rowHeight = 75
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
     }
     
     func setupNavigationBar() {
@@ -79,8 +83,6 @@ extension SearchGitHubRepositoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath) as? RepositoryCell else { return UITableViewCell() }
         
-        
-        
         let repositoryInfo = self.searchedRepositoriesInfomation[indexPath.row]
         let fullName = repositoryInfo[GitHubSearchResultString.full_name.rawValue] as? String ?? ""
         let repoName = fullName.components(separatedBy: "/").last ?? ""
@@ -100,5 +102,23 @@ extension SearchGitHubRepositoriesViewController {
         let FetchDataShowVC = FetchedDataShowViewBuilder.create() as! FetchedDataShowViewController
         FetchDataShowVC.searchedRepositoryInfomation = self.searchedRepositoriesInfomation[indexPath.row]
         self.navigationController?.pushViewController(FetchDataShowVC, animated: true)
+    }
+}
+
+extension SearchGitHubRepositoriesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No results"
+        let attrs = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+   
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "It will be displayed when you search and find it."
+        let attrs = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
     }
 }

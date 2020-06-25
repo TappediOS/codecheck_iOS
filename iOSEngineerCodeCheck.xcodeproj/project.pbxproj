@@ -18,6 +18,23 @@
 		BF29E9EF249F283A00325994 /* Sample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF29E9EE249F283A00325994 /* Sample.storyboard */; };
 		BF390DBB24A2FA1000E0BB08 /* GitHubSearchResultString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */; };
 		BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */; };
+		BF390DC024A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */; };
+		BF390DC124A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DC424A45B2900E0BB08 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC324A45B2900E0BB08 /* Lottie.framework */; };
+		BF390DC524A45B2900E0BB08 /* Lottie.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC324A45B2900E0BB08 /* Lottie.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DC724A45B3300E0BB08 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC624A45B3300E0BB08 /* Realm.framework */; };
+		BF390DC824A45B3300E0BB08 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC624A45B3300E0BB08 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DCA24A45B4000E0BB08 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; };
+		BF390DCB24A45B4000E0BB08 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF390DCF24A45F5000E0BB08 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */; };
+		BF390DD124A4617000E0BB08 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */; };
+		BF390DD424A462C300E0BB08 /* FavoriteRepositories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF390DD324A462C300E0BB08 /* FavoriteRepositories.storyboard */; };
+		BF390DD624A462D200E0BB08 /* FavoriteRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DD524A462D200E0BB08 /* FavoriteRepositoriesViewController.swift */; };
+		BF390DD824A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DD724A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift */; };
+		BF390DDA24A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DD924A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift */; };
+		BF390DDC24A462F000E0BB08 /* FavoriteRepositoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DDB24A462F000E0BB08 /* FavoriteRepositoriesModel.swift */; };
+		BF390DDE24A466A000E0BB08 /* FavoriteRepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DDD24A466A000E0BB08 /* FavoriteRepositoryCell.swift */; };
+		BF390DE024A468EB00E0BB08 /* FavoriteRepositoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF390DDF24A468EB00E0BB08 /* FavoriteRepositoryObject.swift */; };
 		BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */; };
 		BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */; };
 		BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */; };
@@ -53,6 +70,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF390DC224A45B1F00E0BB08 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF390DC824A45B3300E0BB08 /* Realm.framework in Embed Frameworks */,
+				BF390DC124A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Embed Frameworks */,
+				BF390DCB24A45B4000E0BB08 /* RealmSwift.framework in Embed Frameworks */,
+				BF390DC524A45B2900E0BB08 /* Lottie.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BF29E9D4249F267700325994 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		BF29E9DF249F272700325994 /* ExString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExString.swift; sourceTree = "<group>"; };
@@ -65,6 +99,19 @@
 		BF29E9EE249F283A00325994 /* Sample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sample.storyboard; sourceTree = "<group>"; };
 		BF390DBA24A2FA1000E0BB08 /* GitHubSearchResultString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearchResultString.swift; sourceTree = "<group>"; };
 		BF390DBC24A3752400E0BB08 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
+		BF390DC324A45B2900E0BB08 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		BF390DC624A45B3300E0BB08 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
+		BF390DD324A462C300E0BB08 /* FavoriteRepositories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteRepositories.storyboard; sourceTree = "<group>"; };
+		BF390DD524A462D200E0BB08 /* FavoriteRepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesViewController.swift; sourceTree = "<group>"; };
+		BF390DD724A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesBuilder.swift; sourceTree = "<group>"; };
+		BF390DD924A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesPresenter.swift; sourceTree = "<group>"; };
+		BF390DDB24A462F000E0BB08 /* FavoriteRepositoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoriesModel.swift; sourceTree = "<group>"; };
+		BF390DDD24A466A000E0BB08 /* FavoriteRepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryCell.swift; sourceTree = "<group>"; };
+		BF390DDF24A468EB00E0BB08 /* FavoriteRepositoryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepositoryObject.swift; sourceTree = "<group>"; };
 		BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FetchedDataShow.storyboard; sourceTree = "<group>"; };
 		BF65C21824A1AD0900C03EDA /* FetchedDataShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowViewController.swift; sourceTree = "<group>"; };
 		BF65C21A24A1AD1100C03EDA /* FetchedDataShowBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataShowBuilder.swift; sourceTree = "<group>"; };
@@ -94,6 +141,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF390DC724A45B3300E0BB08 /* Realm.framework in Frameworks */,
+				BF390DC024A45B1F00E0BB08 /* DZNEmptyDataSet.framework in Frameworks */,
+				BF390DCA24A45B4000E0BB08 /* RealmSwift.framework in Frameworks */,
+				BF390DC424A45B2900E0BB08 /* Lottie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +168,9 @@
 		BF29E9D6249F269800325994 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF390DCD24A45EBA00E0BB08 /* MainTabBar */,
 				BF65C22024A1B01500C03EDA /* SearchGitHubRepositories */,
+				BF390DD224A4629C00E0BB08 /* FavoriteRepositories */,
 				BF65C21724A1ACF400C03EDA /* FetchedDataShow */,
 				BF29E9DE249F26FB00325994 /* Sample */,
 				BF29E9DD249F26F900325994 /* Storyboards */,
@@ -183,6 +236,8 @@
 				BF65C21524A1ACF000C03EDA /* FetchedDataShow.storyboard */,
 				BF29E9EE249F283A00325994 /* Sample.storyboard */,
 				BF65C22924A1B0A400C03EDA /* SearchGitHubRepositories.storyboard */,
+				BF390DD024A4617000E0BB08 /* MainTabBar.storyboard */,
+				BF390DD324A462C300E0BB08 /* FavoriteRepositories.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -196,6 +251,38 @@
 				BF29E9EB249F27CC00325994 /* SampleViewPresenter.swift */,
 			);
 			path = Sample;
+			sourceTree = "<group>";
+		};
+		BF390DBE24A45B1E00E0BB08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF390DC924A45B3F00E0BB08 /* RealmSwift.framework */,
+				BF390DC624A45B3300E0BB08 /* Realm.framework */,
+				BF390DC324A45B2900E0BB08 /* Lottie.framework */,
+				BF390DBF24A45B1E00E0BB08 /* DZNEmptyDataSet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF390DCD24A45EBA00E0BB08 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BF390DCE24A45F5000E0BB08 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		BF390DD224A4629C00E0BB08 /* FavoriteRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				BF390DD524A462D200E0BB08 /* FavoriteRepositoriesViewController.swift */,
+				BF390DD724A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift */,
+				BF390DD924A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift */,
+				BF390DDB24A462F000E0BB08 /* FavoriteRepositoriesModel.swift */,
+				BF390DDD24A466A000E0BB08 /* FavoriteRepositoryCell.swift */,
+				BF390DDF24A468EB00E0BB08 /* FavoriteRepositoryObject.swift */,
+			);
+			path = FavoriteRepositories;
 			sourceTree = "<group>";
 		};
 		BF65C21724A1ACF400C03EDA /* FetchedDataShow */ = {
@@ -229,6 +316,7 @@
 				BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */,
 				BFD945FF244DC5EB0012785A /* iOSEngineerCodeCheckUITests */,
 				BFD945DC244DC5E80012785A /* Products */,
+				BF390DBE24A45B1E00E0BB08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,6 +371,8 @@
 				BFD945D7244DC5E80012785A /* Sources */,
 				BFD945D8244DC5E80012785A /* Frameworks */,
 				BFD945D9244DC5E80012785A /* Resources */,
+				BF390DC224A45B1F00E0BB08 /* Embed Frameworks */,
+				BF390DCC24A45B5A00E0BB08 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -380,8 +470,10 @@
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BF65C22A24A1B0A400C03EDA /* SearchGitHubRepositories.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
+				BF390DD124A4617000E0BB08 /* MainTabBar.storyboard in Resources */,
 				BF29E9EF249F283A00325994 /* Sample.storyboard in Resources */,
 				BF65C21624A1ACF000C03EDA /* FetchedDataShow.storyboard in Resources */,
+				BF390DD424A462C300E0BB08 /* FavoriteRepositories.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +493,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BF390DCC24A45B5A00E0BB08 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BFD945D7244DC5E80012785A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -408,10 +524,13 @@
 			files = (
 				BF29E9EA249F27C400325994 /* SampleViewController.swift in Sources */,
 				BF29E9E8249F27BA00325994 /* SampleViewBuilder.swift in Sources */,
+				BF390DDC24A462F000E0BB08 /* FavoriteRepositoriesModel.swift in Sources */,
+				BF390DD824A462DE00E0BB08 /* FavoriteRepositoriesBuilder.swift in Sources */,
 				BF65C22224A1B02D00C03EDA /* SearchGitHubRepositoriesViewController.swift in Sources */,
 				BF29E9E6249F27A300325994 /* SampleModel.swift in Sources */,
 				BF65C21924A1AD0900C03EDA /* FetchedDataShowViewController.swift in Sources */,
 				BF65C21D24A1AD2500C03EDA /* FetchedDataShowModel.swift in Sources */,
+				BF390DE024A468EB00E0BB08 /* FavoriteRepositoryObject.swift in Sources */,
 				BF65C22624A1B03900C03EDA /* SearchGitHubRepositoriesModel.swift in Sources */,
 				BF29E9E0249F272700325994 /* ExString.swift in Sources */,
 				BF29E9EC249F27CC00325994 /* SampleViewPresenter.swift in Sources */,
@@ -419,13 +538,17 @@
 				BF65C21B24A1AD1100C03EDA /* FetchedDataShowBuilder.swift in Sources */,
 				BF29E9D5249F267700325994 /* Routes.swift in Sources */,
 				BF29E9E2249F275600325994 /* ExUIViewController.swift in Sources */,
+				BF390DDA24A462EA00E0BB08 /* FavoriteRepositoriesPresenter.swift in Sources */,
 				BF390DBB24A2FA1000E0BB08 /* GitHubSearchResultString.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BF390DBD24A3752400E0BB08 /* RepositoryCell.swift in Sources */,
 				BF65C22424A1B03500C03EDA /* SearchGitHubRepositoriesBuilder.swift in Sources */,
+				BF390DCF24A45F5000E0BB08 /* MainTabBarController.swift in Sources */,
+				BF390DD624A462D200E0BB08 /* FavoriteRepositoriesViewController.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				BF29E9E4249F277600325994 /* ExUIView.swift in Sources */,
 				BF65C21F24A1AD2C00C03EDA /* FetchedDataShowPresenter.swift in Sources */,
+				BF390DDE24A466A000E0BB08 /* FavoriteRepositoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +715,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,6 +737,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9R4W53MKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

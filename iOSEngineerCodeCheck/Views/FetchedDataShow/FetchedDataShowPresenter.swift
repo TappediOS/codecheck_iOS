@@ -12,10 +12,18 @@ protocol FetchedDataShowViewPresenterProtocol {
     var view: FetchedDataShowViewPresenterOutput! { get set }
     
     func searchProfileImage(imageURLStr: String)
+    func checkIsFavoriteRepository(repositoryTitle: String)
+    
+    func requestAddFavoriteRepogitory(repositoryInfo: [String: Any])
+    func requestRemoveFavoriteRepogitory(repositoryTitle: String)
 }
 
 protocol FetchedDataShowViewPresenterOutput {
     func setProfileImage(imageData: Data)
+    func didAddFavoriteRepository()
+    func didRemoveFavoriteRepository()
+    func isFavoriteRepository(isFavorite: Bool)
+    func errorHappenWhenAddOrRegisterFavorite()
 }
 
 final class FetchedDataShowViewPresenter: FetchedDataShowViewPresenterProtocol, FetchedDataShowModelOutput {
@@ -36,6 +44,31 @@ final class FetchedDataShowViewPresenter: FetchedDataShowViewPresenterProtocol, 
     
     func fetchedProfileImageData(fetchedImageData: Data) {
         self.view.setProfileImage(imageData: fetchedImageData)
+    }
+    
+    func checkIsFavoriteRepository(repositoryTitle: String) {
+        let isFavorite = model.isFavoriteRepository(repositoryTitle: repositoryTitle)
+        self.view.isFavoriteRepository(isFavorite: isFavorite)
+    }
+    
+    func requestAddFavoriteRepogitory(repositoryInfo: [String: Any]) {
+        self.model.addFavoriteRepogitory(repositoryInfo: repositoryInfo)
+    }
+    
+    func requestRemoveFavoriteRepogitory(repositoryTitle: String) {
+        self.model.removeFavoriteRepogitory(repositoryTitle: repositoryTitle)
+    }
+    
+    func didAddFavorite() {
+        self.view.didAddFavoriteRepository()
+    }
+    
+    func didRemoveFavorite() {
+        self.view.didRemoveFavoriteRepository()
+    }
+    
+    func errorHappenWhenAddOrRegisterFavorite() {
+        self.view.errorHappenWhenAddOrRegisterFavorite()
     }
 }
 
